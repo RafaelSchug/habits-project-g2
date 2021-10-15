@@ -8,6 +8,7 @@ export default createGlobalStyle`
         padding:0;
         box-sizing: border-box;
         outline: none;
+        font-family: 'Nunito', sans-serif;
     }
 
     :root {
@@ -24,9 +25,12 @@ export default createGlobalStyle`
         background: var(--default-gradient);
         background-attachment: fixed;
         color: var(--default-white);
-        font-family: 'Nunito', sans-serif;
         min-height: 100vh;
         height: 100%;
+    }
+
+    button {
+        cursor: pointer;
     }
 
 

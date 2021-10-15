@@ -1,3 +1,4 @@
+import Routes from './routes';
 import GlobalStyle from './styles/global';
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
     <>
     <GlobalStyle/>
     <div className="App">
-      Habits
+      <Routes></Routes>
     </div>
     </>
   );
