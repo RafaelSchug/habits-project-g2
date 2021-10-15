@@ -11,17 +11,22 @@ export default createGlobalStyle`
     }
 
     :root {
-        --bg-primary-color: #232323;
+        --bg-primary-color: #0092DF;
         --bg-secondary-color: #053F5E;
-        --default-blue: #115173;
+        --default-black: #232323;
         --default-yellow: #FFD700;
         --default-white: #F7F9F9;
+        --default-gradient: linear-gradient(0deg, #053F5E, #0092DF)
     }
 
     body {
-        background: var(---bg-primary-color);
-        color: var(---default-white);
-        font-family: 'Nunito';
+        /* background: var(--bg-primary-color); */
+        background: var(--default-gradient);
+        background-attachment: fixed;
+        color: var(--default-white);
+        font-family: 'Nunito', sans-serif;
+        min-height: 100vh;
+        height: 100%;
     }
 
 
