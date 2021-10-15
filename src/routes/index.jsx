@@ -2,6 +2,7 @@ import { Switch, Route, useHistory } from "react-router"
 import Dashboard from "../pages/Dashboard";
 import Group from "../pages/Group";
 import GroupList from "../pages/GroupList";
+import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
@@ -12,7 +13,7 @@ const Routes = () => {
     return (
         <Switch>
             <Route exact path='/'>
-                <Dashboard/>
+                <Home/>
             </Route>
             <Route exact path='/register'>
                 <Register/>
