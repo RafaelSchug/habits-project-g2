@@ -1,8 +1,9 @@
 import { HeaderContainer } from "./style";
 import { HiOutlineMenu } from "react-icons/hi";
 import { useHistory } from "react-router";
+import Logo from "../../assets/vectors/logo.svg";
 
-const Header = ({ buttonText, url, homePage = false }) => {
+const Header = ({ buttonText, buttonUrl, homePage = false }) => {
   const history = useHistory();
 
   const handleClick = (path) => {
@@ -13,7 +14,7 @@ const Header = ({ buttonText, url, homePage = false }) => {
     <HeaderContainer>
       <div id="menu-logo">
         <HiOutlineMenu />
-        <h1 id="logo">DH</h1>
+        <img id="logo" src={Logo} />
       </div>
       <div id="buttonsDiv">
         {homePage && (
@@ -21,7 +22,7 @@ const Header = ({ buttonText, url, homePage = false }) => {
             Login
           </button>
         )}
-        <button onClick={() => handleClick(url)}> {buttonText} </button>
+        <button onClick={() => handleClick(buttonUrl)}> {buttonText} </button>
       </div>
     </HeaderContainer>
   );
