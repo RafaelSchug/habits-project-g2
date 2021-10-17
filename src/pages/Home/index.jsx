@@ -18,7 +18,7 @@ const Home = () => {
                 <div className='left_container'>
                     <div className='content_wrapper'>
                         <div className='text_content'>
-                            <h1>DEV<br/>HABITS</h1>
+                            <h1>DEV<br />HABITS</h1>
                             <p>Gerencie sua rotina</p>
                             <p>Estabeleça metas</p>
                             <p>Produza com eficiência</p>
@@ -28,13 +28,13 @@ const Home = () => {
                 </div>
                 <div className='right_container'>
                     <div className='content_wrapper'>
-                        <button className='login_button' onClick={_=> handleClick('/login')}>Login</button>
-                        <button className='register_button' onClick={_=> handleClick('/register')}>Registrar-se</button>
+                        <button className='login_button' onClick={_ => handleClick('/login')}>Login</button>
+                        <button className='register_button' onClick={_ => handleClick('/register')}>Registrar-se</button>
                     </div>
                 </div>
             </Container>
         </>
-        
+
     )
 }
 
