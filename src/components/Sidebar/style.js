@@ -13,6 +13,7 @@ top: 0;
 transition: 1s ease;
 filter: brightness(1.5);
 box-shadow: 2px 2px 15px black;
+z-index: 10;
 
 
 img {
