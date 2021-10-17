@@ -8,24 +8,24 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <Header buttonText="Register" buttonUrl="/register" />
+      <Header buttonText="Registrar-se" buttonUrl="/register" />
       <div id="loginMainContainer">
         <form>
           <h1>Login</h1>
           <div id="inputBox">
-            <input />
-            <input />
+            <input placeholder="Usuário" type="text" />
+            <input placeholder="Senha" type="password" />
           </div>
-          <button>Login</button>
-          <span>
+          <button id="loginButton">Login</button>
+          <span id="noAccountSpan">
             Ainda não tem uma conta?{" "}
             <button onClick={() => history.push("/register")}>
               Criar uma conta
-            </button>{" "}
+            </button>
           </span>
         </form>
         <div>
-          <img id="loginSvg" src={LoginSvg} />
+          <img id="loginSvg" src={LoginSvg} alt="LoginImg" />
         </div>
       </div>
     </LoginContainer>

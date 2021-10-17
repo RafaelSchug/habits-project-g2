@@ -3,16 +3,22 @@ import styled from "styled-components";
 export const LoginContainer = styled.div`
   height: 100vh;
 
+  h1 {
+    font-size: 36px;
+  }
+
   #loginMainContainer {
     height: calc(100% - 60px);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right: 10px;
+    padding-left: 10px;
 
     form {
       width: 90%;
       max-width: 430px;
-      height: 450px;
+      height: 500px;
       background-color: var(--bg-secondary-color);
       border-radius: 15px;
       padding: 20px;
@@ -29,14 +35,54 @@ export const LoginContainer = styled.div`
 
         input {
           width: 270px;
-          height: 60px;
+          height: 50px;
           margin-top: 20px;
           border-radius: 15px;
+          padding-left: 20px;
+          padding-right: 20px;
+          font-size: 18px;
         }
       }
 
-      button {
-        border: none;
+      #loginButton {
+        width: 270px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 36px;
+        margin-top: 20px;
+        background-color: var(--default-yellow);
+        color: var(--default-black);
+
+        :hover {
+          filter: brightness(0.9);
+        }
+      }
+
+      #noAccountSpan {
+        font-size: 24px;
+
+        button {
+          background-color: transparent;
+          color: var(--default-yellow);
+          border: none;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 310px) {
+    #loginMainContainer {
+      form {
+        #inputBox {
+          input {
+            width: 230px;
+          }
+        }
+
+        button {
+          border: none;
+        }
       }
     }
   }
