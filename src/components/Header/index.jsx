@@ -2,6 +2,7 @@ import { HeaderContainer } from "./style";
 import { HiOutlineMenu } from "react-icons/hi";
 import { useHistory } from "react-router";
 import Logo from "../../assets/vectors/logo.svg";
+import { useSidebar } from "../../providers/sidebar";
 
 const Header = ({ buttonText, buttonUrl, homePage = false }) => {
   const history = useHistory();
@@ -10,11 +11,13 @@ const Header = ({ buttonText, buttonUrl, homePage = false }) => {
     history.push(path);
   };
 
+  const { openSidebar } = useSidebar();
+
   return (
     <HeaderContainer>
       <div id="menu-logo">
-        <HiOutlineMenu />
-        <img id="logo" src={Logo} />
+        <HiOutlineMenu onClick={openSidebar} />
+        <img id="logo" src={Logo} alt="Logo" onClick={() => handleClick("/")} />
       </div>
       <div id="buttonsDiv">
         {homePage && (
