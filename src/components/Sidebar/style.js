@@ -40,7 +40,8 @@ button {
     color: var(--default-white);
     background-color: transparent;
     border: 2px solid transparent;
-    margin-left: 55px;
+    margin: 10px 0 10px 40px;
+    text-align: left;
 }
 
 
