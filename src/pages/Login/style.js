@@ -37,11 +37,25 @@ export const LoginContainer = styled.div`
         input {
           width: 270px;
           height: 50px;
-          margin-top: 20px;
+          margin-bottom: 10px;
           border-radius: 15px;
           padding-left: 20px;
           padding-right: 20px;
           font-size: 18px;
+        }
+
+        #userInput,
+        #passInput {
+          height: 80px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          label {
+            text-align: start;
+            color: var(--default-yellow);
+            font-size: 14px;
+          }
         }
       }
 
@@ -72,6 +86,7 @@ export const LoginContainer = styled.div`
     }
 
     #loginSvg {
+      margin-left: 10vw;
       animation: right_cont 0.5s 1 ease-in-out;
     }
   }
@@ -85,6 +100,10 @@ export const LoginContainer = styled.div`
           }
         }
 
+        #loginButton {
+          width: 230px;
+        }
+
         button {
           border: none;
         }
@@ -92,17 +111,9 @@ export const LoginContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     #loginSvg {
       display: none;
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    #loginMainContainer {
-      #loginSvg {
-        margin-left: 200px;
-      }
     }
   }
 

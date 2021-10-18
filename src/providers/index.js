@@ -1,11 +1,12 @@
-import { SidebarProvider } from "./sidebar"
+import { AuthProvider } from "./auth";
+import { SidebarProvider } from "./sidebar";
 
 const Providers = ({ children }) => {
-    return (
-        <SidebarProvider>
-            {children}
-        </SidebarProvider>
-    )
-}
+  return (
+    <AuthProvider>
+      <SidebarProvider>{children}</SidebarProvider>
+    </AuthProvider>
+  );
+};
 
-export default Providers
+export default Providers;
