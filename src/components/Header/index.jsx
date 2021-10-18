@@ -1,13 +1,22 @@
 import { HeaderContainer } from "./style";
 import { HiOutlineMenu } from "react-icons/hi";
+import { useAuth } from "../../providers/auth";
 import { useHistory } from "react-router";
-import Logo from "../../assets/vectors/logo.svg";
 import { useSidebar } from "../../providers/sidebar";
+
+import Logo from "../../assets/vectors/logo.svg";
 
 const Header = ({ buttonText, buttonUrl, homePage = false }) => {
   const history = useHistory();
 
+  const { setIsAuth, setToken } = useAuth();
+
   const handleClick = (path) => {
+    if (path === "/") {
+      localStorage.clear();
+      setToken("");
+      setIsAuth(false);
+    }
     history.push(path);
   };
 
