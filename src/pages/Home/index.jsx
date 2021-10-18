@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import { Container } from "./style";
 import homeImage from "../../assets/vectors/home.svg";
 import { useHistory } from "react-router";
+import Sidebar from "../../components/Sidebar";
 
 const Home = () => {
   const history = useHistory();
@@ -13,6 +14,12 @@ const Home = () => {
   return (
     <>
       <Header homePage buttonText="Registrar-se" buttonUrl="/register"></Header>
+      <Sidebar>
+        <div>
+          <button>Sobre</button>
+          <button>Contato</button>
+        </div>
+      </Sidebar>
       <Container>
         <div className="left_container">
           <div className="content_wrapper">
