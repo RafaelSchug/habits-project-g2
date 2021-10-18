@@ -1,11 +1,10 @@
-import { useContext } from 'react'
-import { SidebarContext } from '../../providers/sidebar'
+import { useSidebar } from '../../providers/sidebar'
 import CloseButton from '../../assets/vectors/close_button.svg'
 import { Container } from './style'
 
 const Sidebar = ({ children }) => {
 
-    const { isOpen, closeSidebar } = useContext(SidebarContext)
+    const { isOpen, closeSidebar } = useSidebar()
 
     return (
         <Container isOpen={isOpen} >
