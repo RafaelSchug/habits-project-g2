@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import { Container } from "./style";
 import homeImage from "../../assets/vectors/home.svg";
 import { useHistory } from "react-router";
-import { useSidebar } from "../../providers/sidebar";
 import Sidebar from "../../components/Sidebar";
 
 const Home = () => {
