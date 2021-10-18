@@ -18,7 +18,7 @@ z-index: 10;
 
 img {
     cursor: pointer;
-    margin: 10px;
+    padding: 20px 20px 20px 23px;
 }
 
 #container {
