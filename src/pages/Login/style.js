@@ -27,6 +27,7 @@ export const LoginContainer = styled.div`
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
+      animation: left_cont 0.5s 1 ease-in-out;
 
       #inputBox {
         display: flex;
@@ -69,6 +70,10 @@ export const LoginContainer = styled.div`
         }
       }
     }
+
+    #loginSvg {
+      animation: right_cont 0.5s 1 ease-in-out;
+    }
   }
 
   @media screen and (max-width: 310px) {
@@ -98,6 +103,20 @@ export const LoginContainer = styled.div`
       #loginSvg {
         margin-left: 200px;
       }
+    }
+  }
+
+  @keyframes left_cont {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
+  @keyframes right_cont {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
     }
   }
 `;
