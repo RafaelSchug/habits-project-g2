@@ -13,6 +13,10 @@ export const HeaderContainer = styled.div`
       font-size: 50px;
       margin-right: 20px;
       margin-left: 5px;
+      cursor: pointer;
+    }
+    img {
+      cursor: pointer;
     }
   }
 
