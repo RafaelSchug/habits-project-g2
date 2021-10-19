@@ -32,7 +32,6 @@ const Dashboard = () => {
     const { register, handleSubmit, formState : {errors}, reset } = useForm({ resolver: yupResolver(schema)});
 
     const handleForm = (data) => {
-        console.log(data);
         createHabit(data);
         reset();
     }
@@ -45,8 +44,6 @@ const Dashboard = () => {
         getHabits(token);
     }, [])
     
-    
-
     return (
         <>
         <Header buttonText='Logout' buttonUrl='/'></Header>
