@@ -5,7 +5,9 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
 
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("token")) || false
+  );
 
   useEffect(() => {
     if (token) {
