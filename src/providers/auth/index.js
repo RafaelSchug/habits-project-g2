@@ -1,14 +1,24 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
 
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      setIsAuth(true);
+    }
+  }, [token]);
+
+  const writeToken = (token) => {
+    setToken(token);
+  };
 
   return (
-    <AuthContext.Provider value={{ isAuth, setIsAuth, token, setToken }}>
+    <AuthContext.Provider value={{ isAuth, setIsAuth, token, writeToken }}>
       {children}
     </AuthContext.Provider>
   );
