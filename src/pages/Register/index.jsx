@@ -12,15 +12,15 @@ const Register = () => {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
-    username: yup.string().required("Nome de usuário obrigatório"),
-    email: yup.string().required("Email obrigatório").email("Email inválido"),
+    username: yup.string().required("*Nome de usuário obrigatório"),
+    email: yup.string().required("*Email obrigatório").email("Email inválido"),
     password: yup
       .string()
-      .required("Senha obrigatória")
+      .required("*Senha obrigatória")
       .min(6, "Senha deve conter 6 ou mais caracteres"),
     confirmation: yup
       .string()
-      .required("Confirmação de senha obrigatória")
+      .required("*Confirmação de senha obrigatória")
       .oneOf([yup.ref("password"), null], "Senhas devem coincidir"),
   });
 

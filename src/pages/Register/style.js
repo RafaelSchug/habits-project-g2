@@ -54,9 +54,8 @@ export const Content = styled.div`
     position: relative;
     top: 5px;
     left: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: var(--default-yellow);
-    text-shadow: 1px 1px 1px black;
     align-self: flex-start;
   }
 
@@ -101,14 +100,6 @@ export const Content = styled.div`
     cursor: pointer;
     @media (max-width: 280px) {
       width: 230px;
-    }
-
-    @media (min-width: 1200px) {
-      transition: transform 0.1s linear, border 0.1s linear;
-
-      :hover {
-        transform: scale(1.2);
-      }
     }
   }
 
