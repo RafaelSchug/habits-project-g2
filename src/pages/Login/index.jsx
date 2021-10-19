@@ -24,7 +24,7 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const { setIsAuth, token, setToken } = useAuth();
+  const { token, writeToken } = useAuth();
 
   const handleForm = (data) => {
     api
@@ -32,8 +32,7 @@ const Login = () => {
       .then((response) => {
         localStorage.clear();
         localStorage.setItem("token", JSON.stringify(response.data.access));
-        setToken(response.data.access);
-        setIsAuth(true);
+        writeToken(response.data.access);
         history.push("/dashboard");
       })
       .catch((err) => console.log(err));
