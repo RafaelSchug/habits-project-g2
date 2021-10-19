@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const LoginContainer = styled.div`
   height: 100vh;
+  overflow-x: hidden;
 
   h1 {
     font-size: 36px;
@@ -12,8 +13,6 @@ export const LoginContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 10px;
-    padding-left: 10px;
 
     form {
       width: 90%;
@@ -42,6 +41,11 @@ export const LoginContainer = styled.div`
           padding-left: 20px;
           padding-right: 20px;
           font-size: 18px;
+          border: 2px solid transparent;
+
+          :focus {
+            border: 2px solid var(--default-yellow);
+          }
         }
 
         #userInput,
@@ -62,6 +66,7 @@ export const LoginContainer = styled.div`
       #loginButton {
         width: 270px;
         height: 50px;
+        border: none;
         border-radius: 10px;
         font-size: 36px;
         margin-top: 20px;
