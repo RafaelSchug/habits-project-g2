@@ -24,7 +24,7 @@ const Dashboard = () => {
 
     const schema = yup.object().shape({
         title: yup.string().required('*Título obrigatório'),
-        category: yup.string().required('*Categoria obrigatório'),
+        category: yup.string().required('*Categoria obrigatória'),
         difficulty: yup.string().required('*Dificuldade obrigatória'),
         frequency: yup.string().required('*Frequência obrigatória')
     })
@@ -54,7 +54,7 @@ const Dashboard = () => {
                 <button>Contato</button>
             </div>
             <div>
-                <button>Logout</button>
+                <button onClick={()=> {localStorage.clear(); history.push('/')}}>Logout</button>
             </div>
         </Sidebar>
         <Container backgroundSvg={dashboardUserbg}>
