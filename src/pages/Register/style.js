@@ -115,4 +115,18 @@ export const Content = styled.div`
     text-decoration: none;
     color: var(--default-yellow);
   }
+
+  @keyframes left_cont {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
+  @keyframes right_cont {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+  }
 `;
