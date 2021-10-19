@@ -52,11 +52,11 @@ export const Content = styled.div`
       left: 15px;
     }
     position: relative;
-    top: 5px;
     left: 10px;
     font-size: 14px;
     color: var(--default-yellow);
     align-self: flex-start;
+    height: 15px;
   }
 
   h2 {
