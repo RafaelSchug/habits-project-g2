@@ -84,9 +84,13 @@ export const Content = styled.div`
     padding: 10px 15px;
     width: 270px;
     margin: 5px 0 5px 0;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 10px;
     font-size: 18px;
+
+    :focus {
+      border: 2px solid var(--default-yellow);
+    }
   }
   button {
     font-size: 36px;
