@@ -11,6 +11,7 @@ export const UserDashboardProvider = ({children}) => {
 
 
     const getHabits = (token) => {
+        
         api.get('/habits/personal/', {headers: {Authorization: `Bearer ${token}` }})
         .then(response => {
             setHabits(response.data);
@@ -26,28 +27,27 @@ export const UserDashboardProvider = ({children}) => {
         const {how_much_achieved} = habits.find(item => item.id === id);
         const newHowMuchAchieved = how_much_achieved + 10;
         const isAchieved = newHowMuchAchieved >= 100;
-
+        
         api.patch(`/habits/${id}/`, {'how_much_achieved': newHowMuchAchieved, 'achieved': isAchieved}, {headers: {Authorization: `Bearer ${token}` }})
         .then(response => {
-            console.log(response);
             setHabits(habits.map(item => item.id === id ? {...item, how_much_achieved: newHowMuchAchieved, achieved: isAchieved} : item));
         });
     }
 
     const deleteHabit = (id) => {
+
         api.delete(`/habits/${id}/`, {headers: {Authorization: `Bearer ${token}` }})
-        .then(response => {
-            console.log(response);
+        .then((response) => {
             setHabits(habits.filter(item => item.id !== id));
         })
     }
 
     const createHabit = (data) => {
+
         const schema = {...data, achieved: false, how_much_achieved: 0, user: userId};
         api.post('/habits/', schema, {headers: {Authorization: `Bearer ${token}` }})
         .then(response => {
-            console.log(response);
-            getHabits(token);
+            setHabits([...habits, {...schema, id: response.data.id}]);
         })
     }
 

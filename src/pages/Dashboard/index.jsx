@@ -24,10 +24,10 @@ const Dashboard = () => {
     
 
     const schema = yup.object().shape({
-        title: yup.string().required('Campo obrigatório'),
-        category: yup.string().required('Campo obrigatório'),
-        difficulty: yup.string().required('Campo obrigatório'),
-        frequency: yup.string().required('Campo obrigatório')
+        title: yup.string().required('Título obrigatório'),
+        category: yup.string().required('Categoria obrigatória'),
+        difficulty: yup.string().required('Dificuldade obrigatória'),
+        frequency: yup.string().required('Frequência obrigatória')
     })
 
     const { register, handleSubmit, formState : {errors}, reset } = useForm({ resolver: yupResolver(schema)});
@@ -68,20 +68,20 @@ const Dashboard = () => {
                     <h2>Adicionar Hábito</h2>
                     <form onSubmit={handleSubmit(handleForm)}>
                         <div>
-                            {errors.title && <label htmlFor="title_field">{errors.title.message}</label>}
+                            <label htmlFor="title_field">{errors.title?.message}</label>
                             <input id='title_field' type="text" placeholder='Título' {...register('title')}/>
                         </div>
                         <div>
-                            {errors.category && <label htmlFor="category_field">{errors.category.message}</label>}
+                        <label htmlFor="category_field">{errors.category?.message}</label>
                             <input id='category_field' type="text" placeholder='Categoria' {...register('category')}/>
                         </div>
                         <div className='flex'>
                             <div>
-                                {errors.difficulty && <label htmlFor="difficulty_field">{errors.difficulty.message}</label>}
+                                <label htmlFor="difficulty_field">{errors.difficulty?.message}</label>
                                 <input id='difficulty_field' type="text" placeholder='Dificuldade' {...register('difficulty')}/>
                             </div>
                             <div>
-                                {errors.frequency && <label htmlFor="frequency_field">{errors.frequency.message}</label>}
+                                <label htmlFor="frequency_field">{errors.frequency?.message}</label>
                                 <input id='frequency_field' type="text" placeholder='Frequência' {...register('frequency')}/>
                             </div>
                         </div>

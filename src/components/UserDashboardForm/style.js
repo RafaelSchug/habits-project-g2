@@ -12,19 +12,26 @@ const Container = styled.div`
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     box-shadow: 0px 0px 3px 3px #3f3b3b;
 
+    h2 {
+        font-size: 32px;
+    }
 
     form {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 10px;
 
-        > div {
+   
+        > div{
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 67px;
 
             label {
                 display: block;
@@ -53,11 +60,13 @@ const Container = styled.div`
     .flex {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
+        flex-direction: row;
         gap: 20px;
 
         input {
             flex: 1 1 50%;
+            height: 48px;
         }
     }
 
@@ -70,6 +79,8 @@ const Container = styled.div`
         font-weight: bold;
         border-radius: 10px;
         font-size: 16px;
+        margin-top: 20px;
+
     }
 
 
