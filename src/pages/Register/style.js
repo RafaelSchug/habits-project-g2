@@ -48,6 +48,9 @@ export const Content = styled.div`
   border-radius: 10px;
 
   .error {
+    @media (max-width: 280px) {
+      left: 15px;
+    }
     position: relative;
     top: 5px;
     left: 10px;
@@ -63,6 +66,9 @@ export const Content = styled.div`
   }
 
   form {
+    @media (max-width: 280px) {
+      text-align: center;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
