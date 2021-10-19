@@ -52,11 +52,11 @@ export const Content = styled.div`
       left: 15px;
     }
     position: relative;
-    top: 5px;
     left: 10px;
     font-size: 14px;
     color: var(--default-yellow);
     align-self: flex-start;
+    height: 15px;
   }
 
   h2 {
@@ -84,9 +84,13 @@ export const Content = styled.div`
     padding: 10px 15px;
     width: 270px;
     margin: 5px 0 5px 0;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 10px;
     font-size: 18px;
+
+    :focus {
+      border: 2px solid var(--default-yellow);
+    }
   }
   button {
     font-size: 36px;
@@ -110,5 +114,19 @@ export const Content = styled.div`
   a {
     text-decoration: none;
     color: var(--default-yellow);
+  }
+
+  @keyframes left_cont {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
+  @keyframes right_cont {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
   }
 `;
