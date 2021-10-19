@@ -36,8 +36,10 @@ const Container = styled.div`
             label {
                 display: block;
                 font-size: 14px;
+                line-height: 12px;
                 color: var(--default-yellow);
                 text-align: left;
+                margin-bottom: 2px;
             }
         }
     }
@@ -62,7 +64,11 @@ const Container = styled.div`
         justify-content: space-between;
         align-items: flex-end;
         flex-direction: row;
-        gap: 20px;
+        gap: 10px;
+
+        label {
+            text-align: center;
+        }
 
         input {
             flex: 1 1 50%;
@@ -81,7 +87,12 @@ const Container = styled.div`
         font-size: 16px;
         margin-top: 20px;
 
+        :hover {
+            filter: brightness(0.9);
+        }
     }
+
+    
 
 
     @media screen and (max-width: 500px){

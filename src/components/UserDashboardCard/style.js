@@ -11,7 +11,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    box-shadow: 0px 4px 3px 2px #313131;
+    box-shadow: 0px 0px 3px 3px #3f3b3b;
 
     .flex {
 
@@ -19,10 +19,12 @@ const Container = styled.div`
         flex-direction: column;
         gap: 10px;
 
+
         .info_wrapper {
 
-            > :nth-child(n){
+            > h2{
                 padding: 5px 0;
+                font-size: 28px;
                 gap: 8px;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -31,7 +33,17 @@ const Container = styled.div`
                 -webkit-box-orient: vertical;
             }
 
-                        
+            p {
+                display:flex;
+                align-items: center;
+                gap: 5px;
+                padding: 5px 0;
+                font-size: 22px;
+                
+                svg {
+                    font-size: 22px;
+                }
+            }
         }
 
         .progress_wrapper {
@@ -68,6 +80,18 @@ const Container = styled.div`
             border: none;
             font-size: 16px;
             flex: 1;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+
+            :hover {
+                filter: brightness(0.9);
+            }
+
+            :active {
+                filter: brightness(0.8) saturate(2.8);
+            }
         }
 
         .checkin {

@@ -15,7 +15,6 @@ import { useEffect } from "react";
 import { useAuth } from "../../providers/auth";
 
 
-
 const Dashboard = () => {
     
     const history = useHistory();
@@ -24,10 +23,10 @@ const Dashboard = () => {
     
 
     const schema = yup.object().shape({
-        title: yup.string().required('Título obrigatório'),
-        category: yup.string().required('Categoria obrigatória'),
-        difficulty: yup.string().required('Dificuldade obrigatória'),
-        frequency: yup.string().required('Frequência obrigatória')
+        title: yup.string().required('*Título obrigatório'),
+        category: yup.string().required('*Categoria obrigatório'),
+        difficulty: yup.string().required('*Dificuldade obrigatória'),
+        frequency: yup.string().required('*Frequência obrigatória')
     })
 
     const { register, handleSubmit, formState : {errors}, reset } = useForm({ resolver: yupResolver(schema)});
@@ -38,16 +37,15 @@ const Dashboard = () => {
         reset();
     }
 
-    if(!localStorage.getItem('token')){
-        history.push('/');
+    if(!isAuth){
+        history.push('/login');
     } 
 
     useEffect(()=> {
         getHabits(token);
     }, [])
     
-
-
+    
 
     return (
         <>
