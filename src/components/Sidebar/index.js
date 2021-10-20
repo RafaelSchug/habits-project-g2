@@ -6,11 +6,13 @@ const Sidebar = ({ children }) => {
   const { isOpen, closeSidebar } = useSidebar();
 
   return (
-    <Container isOpen={isOpen}>
-      <img src={CloseButton} onClick={closeSidebar} />
-      <div id="container">{children}</div>
-    </Container>
-  );
-};
+        <Container isOpen={isOpen} >
+            <img src={CloseButton} alt="close button" onClick={closeSidebar} />
+            <div id="container">
+                {children}
+            </div>
+        </Container>
+    )
+}
 
-export default Sidebar;
+export default Sidebar
