@@ -19,7 +19,7 @@ const Dashboard = () => {
     
     const history = useHistory();
     const { habits, updateHabit, deleteHabit, createHabit, getHabits} = useUserDashboard();
-    const {token, isAuth} = useAuth();
+    const {token, isAuth, writeToken, setIsAuth} = useAuth();
     
 
     const schema = yup.object().shape({
@@ -43,6 +43,15 @@ const Dashboard = () => {
     useEffect(()=> {
         getHabits(token);
     }, [])
+
+    const handleClick = (path) => {
+        if (path === "/") {
+            localStorage.clear();
+            writeToken(false);
+            setIsAuth(false);
+        }
+        history.push(path);
+    };
     
     return (
         <>
@@ -54,7 +63,7 @@ const Dashboard = () => {
                 <button>Contato</button>
             </div>
             <div>
-                <button onClick={()=> {localStorage.clear(); history.push('/')}}>Logout</button>
+                <button onClick={()=> {handleClick('/')}}>Logout</button>
             </div>
         </Sidebar>
         <Container backgroundSvg={dashboardUserbg}>

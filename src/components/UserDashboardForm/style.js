@@ -16,6 +16,7 @@ const Container = styled.div`
 
     h2 {
         font-size: 32px;
+        line-height: 30px;
     }
 
     form {

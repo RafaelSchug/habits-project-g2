@@ -132,9 +132,18 @@ const Container = styled.div`
 
     @media screen and (max-width: 768px){
         max-width: unset;
+        min-width: 230px;
         flex: 1;
     }
 
+
+    @media screen and (max-width: 680px){
+        min-width: 300px;
+    }
+
+    @media screen and (max-width: 500px){
+        min-width: 260px;
+    }
 
 
 `

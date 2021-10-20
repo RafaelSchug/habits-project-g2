@@ -31,6 +31,7 @@ const Container = styled.div`
         gap: 20px;
         min-height: calc(100vh - 140px);
         height: calc(100vh - 140px);
+        min-width: 330px;
         overflow-y: auto;
 
         background: ${props => `url(${props.backgroundSvg})`};
@@ -39,25 +40,21 @@ const Container = styled.div`
         background-repeat: no-repeat;
 
         ::-webkit-scrollbar{
-        width: 13px;
-        height: 13px;
-    }
-    ::-webkit-scrollbar-thumb{
-        background: var(--bg-primary-color);
-        border-radius: 10px;
-
-    }
-    ::-webkit-scrollbar-thumb:hover{
-        background: #FFEA29;
+            width: 13px;
+            height: 13px;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: var(--bg-primary-color);
+            }
+        ::-webkit-scrollbar-thumb:hover{
+            background: #FFEA29;
         }
         ::-webkit-scrollbar-track{
-        background: var(--bg-secondary-color);
-        border-radius: 10px;
-        box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+            background: var(--bg-secondary-color);
+            box-shadow: inset 0px 0px 0px 0px #F0F0F0;
         }
 
-
-
+        
         > :nth-child(even){
             animation: card_anim .6s 1 ease-in-out;
         }
@@ -84,6 +81,34 @@ const Container = styled.div`
             transform: scale(1.05);
         }
     }
+
+    @media screen and (max-width: 1024px){
+        .right_container {
+            background: unset;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        .right_container {
+            min-width: 430px;
+            min-height: unset;
+            height: 100%;
+            overflow-y: unset;
+            background: unset;
+
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        .left_container {
+            flex: 100%;
+        }
+        .right_container {
+            min-width: unset;
+        }
+    }
+
+    
 
 `
 
