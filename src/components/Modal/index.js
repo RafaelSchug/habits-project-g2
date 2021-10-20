@@ -1,17 +1,16 @@
 import { useModal } from "../../providers/modal";
 import { ModalContainer } from "./style";
 
-const Modal = () => {
+// Ao fazer o modal de Nova Meta e Nova Atividade, englobar tudo numa div com id "newGoalsActModal", usar h1 pro título, e colocar os inputs dentro de uma div
+
+const Modal = ({ children }) => {
   const { openModal, modalCloseClick } = useModal();
 
   return (
     <>
       {openModal && (
-        <ModalContainer onClick={modalCloseClick}>
-          <div id="modalDiv">
-            <h1>Meu modal</h1>
-            <button onClick={modalCloseClick}>Fechar modal</button>
-          </div>
+        <ModalContainer onClick={modalCloseClick} id="modalContainer">
+          <div id="modalDiv">{children}</div>
         </ModalContainer>
       )}
     </>

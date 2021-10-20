@@ -10,7 +10,7 @@ export const ModalProvider = ({ children }) => {
   };
 
   const modalCloseClick = (event) => {
-    if (event.target.id !== "modalDiv") {
+    if (event.target.id === "modalContainer") {
       setOpenModal(false);
     }
   };
