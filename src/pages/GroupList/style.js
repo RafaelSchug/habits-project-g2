@@ -17,6 +17,38 @@ margin: 0 auto;
         z-index: -1;
     }
 
+    h2 {
+        font-size: 28px;
+        margin: 15px 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        text-align: start;
+        color: var(--default-yellow);
+        font-size: 14px;
+    }
+
+    input {
+        width: 270px;
+        height: 50px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: 2px solid transparent;
+
+        :focus {
+            border: 2px solid var(--default-yellow);
+        }
+    }
+
     #content {
         display: flex;
         justify-content: space-evenly;
@@ -24,78 +56,102 @@ margin: 0 auto;
         width: 100%;
     }
 
-        #formContainer {
-            text-align: center;
-            min-width: 300px;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: var(--bg-secondary-color);
+`
+
+export const FormContainer = styled.div`
+
+text-align: center;
+min-width: 300px;
+height: 400px;
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: var(--bg-secondary-color);
+border-radius: 10px;
+
+    .inputs {
+        height: 82px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        #addButton {
+            width: 130px;
+            height: 40px;
             border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            border: transparent;
+            margin-top: 20px;
+            background-color: var(--default-yellow);
+            color: var(--default-black);
+
+            :hover {
+                filter: brightness(0.9);
+            }
         }
 
-            h2 {
-                font-size: 32px;
-                margin: 15px 0;
-            }
+`
 
-            form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+export const GroupsContainer = styled.div`
 
-            .inputs {
-                height: 82px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
+width: 70%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+height: 760px;
 
-                input {
-                    width: 270px;
-                    height: 50px;
-                    margin-bottom: 10px;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    font-size: 18px;
-                    border-radius: 5px;
-                    border: 2px solid transparent;
+#groupSearch {
+    width: 500px;
+    height: 155px;
+    background-color: var(--bg-primary-color);
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-                    :focus {
-                        border: 2px solid var(--default-yellow);
-                    }
-                }
+    h2 {
+        margin-top: 0;
+    }
+}
 
-                label {
-                    text-align: start;
-                    color: var(--default-yellow);
-                    font-size: 14px;
-                }
+    #searchForm {
+        width: 90%;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        margin: 0 10px;
+    }
 
-                #addButton {
-                    width: 130px;
-                    height: 40px;
-                    border-radius: 10px;
-                    font-size: 16px;
-                    font-weight: 600;
-                    border: transparent;
-                    margin-top: 20px;
-                    background-color: var(--default-yellow);
-                    color: var(--default-black);
+    #searchInput {
+        width: 90%;
+        margin-bottom: 0;
+        border-radius: 5px 0 0 5px;
+    }
 
-                    :hover {
-                        filter: brightness(0.9);
-                    }
-                }
-        
-        #groupsContainer {
-            width: 70%;
-            height: 740px;
-            display: flex;
-            flex-wrap: wrap;
+    #searchButton {
+        width: 130px;
+        height: 50px;
+        border-radius: 0 5px 5px 0;
+        font-size: 16px;
+        font-weight: 600;
+        border: transparent;
+        background-color: var(--default-yellow);
+        color: var(--default-black);
+
+        :hover {
+            filter: brightness(0.9);
         }
+    }
 
-
+    #groups {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        margin-top: 10px;
+        box-sizing: border-box;
+        height: 585px;
+    }
 `

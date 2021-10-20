@@ -1,10 +1,15 @@
 import { AuthProvider } from "./auth";
+import { GroupListProvider } from "./groupList";
 import { SidebarProvider } from "./sidebar";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
-      <SidebarProvider>{children}</SidebarProvider>
+      <SidebarProvider>
+        <GroupListProvider>
+          {children}
+        </GroupListProvider>
+      </SidebarProvider>
     </AuthProvider>
   );
 };

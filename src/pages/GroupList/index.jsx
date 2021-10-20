@@ -2,28 +2,22 @@ import { Redirect, useHistory } from "react-router";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import groupsImage from "../../assets/vectors/background_dashboard_groups.svg"
-import { Container } from "./style";
-import { useState } from "react";
+import { Container, FormContainer, GroupsContainer } from "./style";
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import api from "../../services/api";
-// import { useAuth } from "../../providers/auth";
+import { useAuth } from "../../providers/auth";
+import { useGroupList } from "../../providers/groupList";
+import Card from "../../components/GroupCard";
 
 const GroupList = () => {
 
   const history = useHistory()
 
-  // const { token, isAuth } = useAuth()
+  const { token, isAuth, setIsAuth, writeToken } = useAuth()
 
-  const [token, setToken] = useState(() => {
-    const localToken = localStorage.getItem("token")
-    if (localToken) {
-      return JSON.parse(localToken)
-    } else {
-      <Redirect to="/" />
-    }
-  })
+  const { groups, next, previous, addGroup, nextPage, previousPage } = useGroupList()
 
   const schema = yup.object().shape({
     name: yup
@@ -43,22 +37,35 @@ const GroupList = () => {
   })
 
   const onSubmit = (data) => {
-    console.log(data)
     api
       .post("/groups/", data, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
         console.log(response.data)
+        // addGroup()
         reset()
       })
       .catch(err => console.log(err))
 
   }
 
+  if (!token && !isAuth) {
+    return <Redirect to="/" />;
+  }
+
   const handleNavigation = (path) => {
     history.push(path)
   }
+
+  const handleLogout = (path) => {
+    if (path === "/") {
+      localStorage.clear();
+      writeToken(false);
+      setIsAuth(false);
+    }
+    history.push(path);
+  };
 
   return (
     <div>
@@ -72,7 +79,7 @@ const GroupList = () => {
         </div>
 
         <div>
-          <button onClick={() => handleNavigation("/")} >Logout</button>
+          <button onClick={() => handleLogout("/")} >Logout</button>
         </div>
       </Sidebar>
 
@@ -80,7 +87,7 @@ const GroupList = () => {
         <img src={groupsImage} alt="groups illustration" />
 
         <div id="content" >
-          <div id="formContainer" >
+          <FormContainer>
             <h2>Criar Grupo</h2>
             <form onSubmit={handleSubmit(onSubmit)} >
               <div className="inputs" >
@@ -99,17 +106,23 @@ const GroupList = () => {
               </div>
               <button id="addButton" type="submit" >Adicionar</button>
             </form>
-          </div>
+          </FormContainer>
 
-          <div id="groupsContainer" >
+          <GroupsContainer>
             <div id="groupSearch" >
-
+              <h2>Pesquisar Grupo</h2>
+              <form id="searchForm" >
+                <input id="searchInput" placeholder="Pesquisar" />
+                <button id="searchButton" >Pesquisar</button>
+              </form>
             </div>
 
             <div id="groups" >
-
+              {groups.map((element, index) => (
+                <Card element={element} key={index} />
+              ))}
             </div>
-          </div>
+          </GroupsContainer>
         </div>
       </Container>
     </div>
