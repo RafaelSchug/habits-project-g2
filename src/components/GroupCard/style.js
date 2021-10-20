@@ -41,29 +41,14 @@ filter: drop-shadow(0px 6px 5px #3F3B3B);
         :hover {
             filter: brightness(0.9);
         }
-
-        :active {
-            background: transparent;
-            border: 2px solid var(--default-white);
-            color: var(--default-white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 4px;
-            animation: achieved_anim .5s 1 ease-in-out;
-            pointer-events: none;
-        }
-        @keyframes achieved_anim {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            70%{
-                opacity: 1;
-                transform: scale(1.1);
-            }
-        }
         
+    }
+
+    #subscribed {
+        background: transparent;
+        border: 2px solid var(--default-white);
+        color: var(--default-white);
+        pointer-events: none;
     }
 
 @media screen and (max-width: 768px) {

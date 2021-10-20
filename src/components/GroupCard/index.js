@@ -4,12 +4,18 @@ import api from "../../services/api"
 import { GroupCard } from "./style"
 import { BiCategory } from 'react-icons/bi';
 import { BsCardText } from 'react-icons/bs'
+import jwt_decode from "jwt-decode";
+import { useGroupList } from "../../providers/groupList";
 
-const Card = ({ element: { id, name, description, category }, element }) => {
+const Card = ({ element: { id, name, description, category, users_on_group } }) => {
 
     const { token } = useAuth()
 
+    const { setGroups, setNext } = useGroupList()
+
     const history = useHistory()
+
+    const subscribed = users_on_group.some(element => element.id === jwt_decode(token).user_id)
 
     const handleSubscription = () => {
         api
@@ -18,22 +24,30 @@ const Card = ({ element: { id, name, description, category }, element }) => {
             })
             .then(response => {
                 console.log(response)
+                setGroups([])
+                setNext(`https://kenzie-habits.herokuapp.com/groups/`)
             })
             .catch(err => console.log(err))
     }
 
-    const handleClickGroup = (e) => {
-        if (e.target.id !== "subsButton") {
-            history.push(`/groups/${id}`)
-        }
+    const handleClickGroup = () => {
+        history.push(`/groups/${id}`)
     }
 
     return (
-        <GroupCard onClick={handleClickGroup} >
+        <GroupCard id="card" >
             <h2>{name}</h2>
             <p><BsCardText />Descrição: {description}</p>
             <p><BiCategory />Categoria: {category}</p>
-            <button id='subsButton' onClick={handleSubscription} >Inscrever-se</button>
+            <div id="" >
+                {
+                    subscribed ? <button id="subscribed">Inscrito</button>
+                        :
+                        <button id="subsButton" onClick={handleSubscription} >Inscrever-se</button>
+                }
+                <button onClick={handleClickGroup}>Ver Grupo</button>
+            </div>
+
         </GroupCard>
     )
 }

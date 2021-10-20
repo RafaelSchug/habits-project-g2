@@ -20,7 +20,7 @@ const GroupList = () => {
 
   const { token, isAuth, setIsAuth, writeToken } = useAuth()
 
-  const { groups } = useGroupList()
+  const { groups, next, setGroups, setNext } = useGroupList()
 
   const filter = groups.filter(element => element.name.includes(input))
 
@@ -41,21 +41,22 @@ const GroupList = () => {
     resolver: yupResolver(schema)
   })
 
+  if (!token && !isAuth) {
+    return <Redirect to="/" />;
+  }
+
   const onSubmit = (data) => {
     api
       .post("/groups/", data, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        console.log(response.data)
         reset()
+        setGroups([])
+        setNext(`https://kenzie-habits.herokuapp.com/groups/`)
       })
       .catch(err => console.log(err))
 
-  }
-
-  if (!token && !isAuth) {
-    return <Redirect to="/" />;
   }
 
   const handleNavigation = (path) => {
@@ -116,7 +117,8 @@ const GroupList = () => {
             <div id="groupSearch" >
               <h2>Pesquisar Grupo</h2>
               <form id="searchForm" >
-                <input value={input} onChange={e => setInput(e.target.value)} id="searchInput" placeholder="Pesquisar" />
+                <input value={input} onChange={e => setInput(e.target.value)}
+                  id="searchInput" placeholder="Pesquisar por nome" />
                 {/* <button id="searchButton" >Pesquisar</button> */}
               </form>
             </div>
@@ -133,7 +135,11 @@ const GroupList = () => {
                       filter.map((element, index) => (
                         <Card element={element} key={index} />
                       ))
-                      : <div id="" >Nenhum grupo encontrado</div>
+                      :
+                      next === null ?
+                        <div id="notFound" >Nenhum grupo encontrado</div>
+                        :
+                        <div id="searching" >Carregando...</div>
 
                 }
               </div>

@@ -208,6 +208,12 @@ max-height: 90%;
     #groupsContainer {
         display: flex;
         flex-wrap: wrap;
+
+        #notFound, #searching {
+            color: var(--default-yellow);
+            font-size: 22px;
+            font-weight: 600;
+        }
     }
 
     #buttonsContainer {
