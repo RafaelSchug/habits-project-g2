@@ -27,7 +27,7 @@ const Container = styled.div`
         align-items: flex-start;
         align-content: flex-start;
         flex-wrap: wrap;
-        padding: 5px 20px;
+        padding: 20px 20px;
         gap: 20px;
         min-height: calc(100vh - 140px);
         height: calc(100vh - 140px);
@@ -39,19 +39,16 @@ const Container = styled.div`
         background-position: center;
         background-repeat: no-repeat;
 
-        ::-webkit-scrollbar{
-            width: 13px;
-            height: 13px;
+        ::-webkit-scrollbar {
+            width: 12px;
         }
-        ::-webkit-scrollbar-thumb{
-            background: var(--bg-primary-color);
-            }
-        ::-webkit-scrollbar-thumb:hover{
-            background: #FFEA29;
-        }
-        ::-webkit-scrollbar-track{
+        ::-webkit-scrollbar-track {
             background: var(--bg-secondary-color);
-            box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--default-yellow);
+            border-radius: 20px;
         }
 
         

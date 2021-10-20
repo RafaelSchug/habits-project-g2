@@ -22,16 +22,47 @@ const Container = styled.div`
 
         .info_wrapper {
 
-            > h2{
-                padding: 5px 0;
-                font-size: 28px;
-                gap: 8px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1; /* numero máximo de linhas */
-                -webkit-box-orient: vertical;
+            .title_content {
+                
+                position: relative;
+
+                :hover span {
+                    display: block;
+                }
+
+                @keyframes text-anim {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-50px);
+                    }
+                }
+
+                span {
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    background: var(--default-black);
+                    color: var(--default-white);
+                    left: 0;
+                    top: 40px;
+                    padding: 10px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    animation: text-anim .3s 1 ease-in-out;
+                }
+
+                h2 {
+                    padding: 5px 0;
+                    font-size: 28px;
+                    gap: 8px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1; /* numero máximo de linhas */
+                    -webkit-box-orient: vertical;
+                }
             }
+
 
             p {
                 display:flex;

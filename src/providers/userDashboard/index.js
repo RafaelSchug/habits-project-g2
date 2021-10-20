@@ -10,11 +10,16 @@ export const UserDashboardProvider = ({children}) => {
     const [userId, setUserId] = useState();
 
 
+    const sortHabitsByNotAchieved = (habitsList) => {
+        const sortedHabits = habitsList.sort((a, b) => a.achieved - b.achieved);
+        setHabits(sortedHabits);
+    }
+
     const getHabits = (token) => {
         
         api.get('/habits/personal/', {headers: {Authorization: `Bearer ${token}` }})
         .then(response => {
-            setHabits(response.data);
+            sortHabitsByNotAchieved(response.data);
             setToken(token);
 
             const userid = jwtDecode(token).user_id;

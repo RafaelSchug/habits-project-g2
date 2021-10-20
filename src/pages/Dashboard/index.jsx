@@ -99,9 +99,10 @@ const Dashboard = () => {
                         <UserDashboardCard key={index}>
                         <div className='flex'>
                             <div className='info_wrapper'>
-                                <h2 title={title}>
-                                    {title}
-                                </h2>
+                                <div className='title_content'>
+                                    {/* <span className='hover_content'>{title}</span>   */}
+                                    <h2 title={title}>{title}</h2>
+                                </div>
                                 <p><BsClockHistory/> Frequência: {frequency}</p>
                                 <p><BiCategory/> Categoria: {category}</p>
                                 <p><BsBarChartLine/> Dificuldade: {difficulty}</p>

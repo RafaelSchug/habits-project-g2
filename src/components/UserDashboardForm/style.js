@@ -8,6 +8,7 @@ const Container = styled.div`
     min-height: 300px;
     background: #0092DF;
     border-radius: 10px;
+    margin-top: 20px;
     padding: 20px;
     text-align: center;
     display: flex;
