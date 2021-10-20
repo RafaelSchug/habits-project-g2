@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import api from "../../services/api";
 import axios from "axios";
 
 export const GroupListContext = createContext()
@@ -8,25 +7,22 @@ export const GroupListProvider = ({ children }) => {
 
     const [groups, setGroups] = useState([])
 
-    const [next, setNext] = useState(``)
+    const [next, setNext] = useState(`https://kenzie-habits.herokuapp.com/groups/`)
 
     const [previous, setPrevious] = useState(``)
 
     useEffect(() => {
-        api
-            .get("/groups/")
-            .then(response => (setGroups(response.data.results), setNext(response.data.next)))
-            .catch(error => console.log("erro"))
+        next &&
+            axios.get(next)
+                .then(response => {
+                    setGroups([...groups, ...response.data.results])
+                    setNext(response.data.next)
+                })
+                .catch(error => console.log(error))
 
-    }, [])
+    }, [next])
 
-    const addGroup = (group) => {
-        if (group) {
-            setGroups([...groups, group])
-        }
-    }
-
-    const nextPage = (next) => {
+    const nextPage = () => {
         if (next) {
             axios
                 .get(next)
@@ -42,10 +38,10 @@ export const GroupListProvider = ({ children }) => {
         }
     }
 
-    const previousPage = (prev) => {
-        if (prev) {
+    const previousPage = () => {
+        if (previous) {
             axios
-                .get(prev)
+                .get(previous)
                 .then(response => {
                     console.log(response)
                     return (
@@ -59,7 +55,7 @@ export const GroupListProvider = ({ children }) => {
     }
 
     return (
-        <GroupListContext.Provider value={{ groups, next, previous, addGroup, nextPage, previousPage }} >
+        <GroupListContext.Provider value={{ groups, next, previous, nextPage, previousPage }} >
             {children}
         </GroupListContext.Provider>
     )

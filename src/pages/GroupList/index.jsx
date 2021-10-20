@@ -10,14 +10,19 @@ import api from "../../services/api";
 import { useAuth } from "../../providers/auth";
 import { useGroupList } from "../../providers/groupList";
 import Card from "../../components/GroupCard";
+import { useState } from "react";
 
 const GroupList = () => {
 
   const history = useHistory()
 
+  const [input, setInput] = useState("")
+
   const { token, isAuth, setIsAuth, writeToken } = useAuth()
 
-  const { groups, next, previous, addGroup, nextPage, previousPage } = useGroupList()
+  const { groups } = useGroupList()
+
+  const filter = groups.filter(element => element.name.includes(input))
 
   const schema = yup.object().shape({
     name: yup
@@ -43,7 +48,6 @@ const GroupList = () => {
       })
       .then(response => {
         console.log(response.data)
-        // addGroup()
         reset()
       })
       .catch(err => console.log(err))
@@ -112,16 +116,34 @@ const GroupList = () => {
             <div id="groupSearch" >
               <h2>Pesquisar Grupo</h2>
               <form id="searchForm" >
-                <input id="searchInput" placeholder="Pesquisar" />
-                <button id="searchButton" >Pesquisar</button>
+                <input value={input} onChange={e => setInput(e.target.value)} id="searchInput" placeholder="Pesquisar" />
+                {/* <button id="searchButton" >Pesquisar</button> */}
               </form>
             </div>
 
             <div id="groups" >
-              {groups.map((element, index) => (
-                <Card element={element} key={index} />
-              ))}
+              <div id="groupsContainer">
+                {
+                  !input ?
+                    groups.map((element, index) => (
+                      <Card element={element} key={index} />
+                    ))
+                    :
+                    filter.length ?
+                      filter.map((element, index) => (
+                        <Card element={element} key={index} />
+                      ))
+                      : <div id="" >Nenhum grupo encontrado</div>
+
+                }
+              </div>
+
             </div>
+
+            {/* <div id="buttonsContainer" >
+              <button onClick={previousPage}>Anterior</button>
+              <button onClick={nextPage}>Próxima</button>
+            </div> */}
           </GroupsContainer>
         </div>
       </Container>
