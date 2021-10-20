@@ -7,7 +7,7 @@ background: var(--default-gradient);
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-position: absolute;
+position: fixed;
 left: ${props => props.isOpen ? "0" : "-300px"};
 top: 0;
 transition: 1s ease;
