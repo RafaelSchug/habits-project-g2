@@ -8,7 +8,7 @@ const Sidebar = ({ children }) => {
 
     return (
         <Container isOpen={isOpen} >
-            <img src={CloseButton} onClick={closeSidebar} />
+            <img src={CloseButton} alt="close button" onClick={closeSidebar} />
             <div id="container">
                 {children}
             </div>
