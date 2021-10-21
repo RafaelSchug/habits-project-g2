@@ -73,4 +73,9 @@ filter: drop-shadow(0px 6px 5px #3F3B3B);
         margin-bottom: 20px;
     }
 }
+
+@media screen and (max-width: 280px) {
+    width: 260px;
+    min-width: 0;
+}
 `
