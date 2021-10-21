@@ -30,9 +30,9 @@ const Routes = () => {
             <Route exact path='/groups/:id'>
                 <Group />
             </Route>
-            {/* <Route >
-                {history.push('/')}
-            </Route> */}
+            <Route >
+                {() => history.push('/')}
+            </Route>
         </Switch>
     )
 
