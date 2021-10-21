@@ -86,6 +86,10 @@ export const LoginContainer = styled.div`
           color: var(--default-yellow);
           border: none;
           font-size: 24px;
+
+          :hover {
+            filter: brightness(0.9);
+          }
         }
       }
     }
