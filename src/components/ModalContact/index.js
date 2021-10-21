@@ -5,19 +5,10 @@ import nildoImg from "../../assets/imgs/profile_nildo.png";
 import rafaelImg from "../../assets/imgs/profile_rafael.png";
 import viniImg from "../../assets/imgs/profile_vinicius.png";
 
-import { useEffect } from "react/cjs/react.development";
 import { useModal } from "../../providers/modal";
-import { useSidebar } from "../../providers/sidebar";
 
 const ModalContact = () => {
-  const { setOpenModalContact, openModalContact } = useModal();
-  const { closeSidebar } = useSidebar();
-
-  useEffect(() => {
-    if (openModalContact) {
-      closeSidebar();
-    }
-  }, [openModalContact]);
+  const { setOpenModalContact } = useModal();
 
   return (
     <div id="contactModal">
