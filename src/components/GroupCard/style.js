@@ -10,6 +10,7 @@ margin: 10px;
 border: 2px solid transparent;
 cursor: pointer;
 filter: drop-shadow(0px 6px 5px #3F3B3B);
+transition: .15s linear;
 
 :hover {
     border: 2px solid var(--default-yellow)

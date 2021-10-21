@@ -86,7 +86,7 @@ height: 400px;
 display: flex;
 flex-direction: column;
 align-items: center;
-background-color: var(--bg-secondary-color);
+background-color: var(--bg-primary-color);
 border-radius: 10px;
 filter: drop-shadow(0px 0px 5px #3F3B3B);
 animation: form_anim .5s 1 ease-in-out; 
