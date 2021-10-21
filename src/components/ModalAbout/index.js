@@ -1,20 +1,11 @@
-import { useEffect } from "react";
 import Community from "../../assets/vectors/community.svg";
 import Goals from "../../assets/vectors/goals.svg";
 import Habits from "../../assets/vectors/habits.svg";
 
 import { useModal } from "../../providers/modal";
-import { useSidebar } from "../../providers/sidebar";
 
 const ModalAbout = () => {
-  const { setOpenModalAbout, openModalAbout } = useModal();
-  const { closeSidebar } = useSidebar();
-
-  useEffect(() => {
-    if (openModalAbout) {
-      closeSidebar();
-    }
-  }, [openModalAbout]);
+  const { setOpenModalAbout } = useModal();
 
   return (
     <div id="aboutModal">
