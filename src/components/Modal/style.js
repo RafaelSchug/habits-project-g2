@@ -12,6 +12,17 @@ export const ModalContainer = styled.div`
   justify-content: center;
   z-index: 2;
 
+  > div {
+    animation: modalAnimation 1s 1 ease;
+  }
+
+  @keyframes modalAnimation {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
   #aboutModal {
     width: 250px;
     height: 400px;
