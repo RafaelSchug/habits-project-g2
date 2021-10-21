@@ -9,7 +9,7 @@ import dashboardUserbg from '../../assets/vectors/background_dashboard_user.svg'
 import { useForm } from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useHistory } from "react-router";
+import { useHistory, Redirect } from "react-router";
 import { useUserDashboard } from "../../providers/userDashboard";
 import { useEffect } from "react";
 import { useAuth } from "../../providers/auth";
@@ -41,13 +41,16 @@ const Dashboard = () => {
         reset();
     }
 
-    if(!isAuth){
-        history.push('/login');
-    } 
-
     useEffect(()=> {
-        getHabits(token);
+        if(token){
+            getHabits(token);
+        }
     }, [])
+
+    if(!isAuth){
+        localStorage.clear();
+        return <Redirect to='/login'></Redirect>
+    } 
 
     const handleClick = (path) => {
         if (path === "/") {
