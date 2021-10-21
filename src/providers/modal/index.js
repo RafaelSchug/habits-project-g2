@@ -3,21 +3,30 @@ import { createContext, useContext, useState } from "react";
 export const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModalContact, setOpenModalContact] = useState(false);
+  const [openModalAbout, setOpenModalAbout] = useState(false);
 
   const modalOpenClick = () => {
-    setOpenModal(true);
+    setOpenModalContact(true);
   };
 
   const modalCloseClick = (event) => {
     if (event.target.id === "modalContainer") {
-      setOpenModal(false);
+      setOpenModalContact(false);
+      setOpenModalAbout(false);
     }
   };
 
   return (
     <ModalContext.Provider
-      value={{ openModal, setOpenModal, modalOpenClick, modalCloseClick }}
+      value={{
+        openModalAbout,
+        setOpenModalAbout,
+        openModalContact,
+        setOpenModalContact,
+        modalOpenClick,
+        modalCloseClick,
+      }}
     >
       {children}
     </ModalContext.Provider>
