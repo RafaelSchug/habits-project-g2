@@ -11,6 +11,9 @@ import { useAuth } from "../../providers/auth";
 import { useGroupList } from "../../providers/groupList";
 import Card from "../../components/GroupCard";
 import { useState } from "react";
+import { useModal } from "../../providers/modal";
+import ModalContact from "../../components/ModalContact";
+import Modal from "../../components/Modal";
 
 const GroupList = () => {
 
@@ -21,6 +24,8 @@ const GroupList = () => {
   const { token, isAuth, setIsAuth, writeToken } = useAuth()
 
   const { groups, next, setGroups, setNext } = useGroupList()
+
+  const { openModalContact, setOpenModalContact } = useModal()
 
   const filter = groups.filter(element => element.name.includes(input))
 
@@ -79,13 +84,15 @@ const GroupList = () => {
         <div>
           <button onClick={() => handleNavigation("/dashboard")} >Hábitos</button>
           <button onClick={() => handleNavigation("/groups")} >Grupos</button>
-          <button>Contato</button>
+          <button onClick={() => setOpenModalContact(true)} >Contato</button>
         </div>
 
         <div>
           <button onClick={() => handleLogout("/")} >Logout</button>
         </div>
       </Sidebar>
+
+      {openModalContact && <Modal > <ModalContact /> </Modal>}
 
       <Container>
         <img src={groupsImage} alt="groups illustration" />
