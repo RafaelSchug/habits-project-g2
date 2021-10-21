@@ -13,6 +13,9 @@ import { useHistory } from "react-router";
 import { useUserDashboard } from "../../providers/userDashboard";
 import { useEffect } from "react";
 import { useAuth } from "../../providers/auth";
+import { useModal } from "../../providers/modal";
+import ModalContact from "../../components/ModalContact";
+import Modal from "../../components/Modal";
 
 
 const Dashboard = () => {
@@ -20,6 +23,7 @@ const Dashboard = () => {
     const history = useHistory();
     const { habits, updateHabit, deleteHabit, createHabit, getHabits} = useUserDashboard();
     const {token, isAuth, writeToken, setIsAuth} = useAuth();
+    const { openModalContact, setOpenModalContact } = useModal()
     
 
     const schema = yup.object().shape({
@@ -55,12 +59,13 @@ const Dashboard = () => {
     
     return (
         <>
+         {openModalContact && <Modal > <ModalContact /> </Modal>}
         <Header buttonText='Logout' buttonUrl='/'></Header>
         <Sidebar>
             <div>
                 <button onClick={()=> history.push('/dashboard')}>Hábitos</button>
                 <button onClick={()=> history.push('/groups')}>Grupos</button>
-                <button>Contato</button>
+                <button onClick={()=> setOpenModalContact(true)}>Contato</button>
             </div>
             <div>
                 <button onClick={()=> {handleClick('/')}}>Logout</button>
