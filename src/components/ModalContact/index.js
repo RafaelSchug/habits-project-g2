@@ -1,7 +1,6 @@
 import githubImg from "../../assets/imgs/git.png";
 import igorImg from "../../assets/imgs/profile_igor.png";
 import linkedinImg from "../../assets/imgs/linkedin.png";
-import Modal from "../Modal";
 import nildoImg from "../../assets/imgs/profile_nildo.png";
 import rafaelImg from "../../assets/imgs/profile_rafael.png";
 import viniImg from "../../assets/imgs/profile_vinicius.png";
