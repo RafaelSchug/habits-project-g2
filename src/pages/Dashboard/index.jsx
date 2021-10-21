@@ -44,12 +44,13 @@ const Dashboard = () => {
     useEffect(()=> {
         if(token){
             getHabits(token);
+            closeSidebar();
         }
     }, [])
 
-    if(!isAuth){
+    if(!isAuth && !localStorage.getItem('token')){
         localStorage.clear();
-        return <Redirect to='/login'></Redirect>
+        return <Redirect to='/'></Redirect>
     } 
 
     const handleClick = (path) => {
@@ -62,8 +63,8 @@ const Dashboard = () => {
     };
 
     const handleContact = () => {
-        setOpenModalContact(true)
-        closeSidebar()
+        setOpenModalContact(true);
+        closeSidebar();
     }
     
     return (
