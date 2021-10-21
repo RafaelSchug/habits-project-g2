@@ -5,10 +5,14 @@ import Sidebar from "../../components/Sidebar";
 import groupImg from "../../assets/vectors/background_dashboard_specific_group.svg";
 import GoalCard from "../../components/GoalCard";
 import ActivityCard from "../../components/ActivityCard";
+import ModalContact from "../../components/ModalContact";
+import Modal from "../../components/Modal";
 import api from "../../services/api";
+import { useModal } from "../../providers/modal";
 import { Container, Button, Subscribed } from "./style";
 import { useAuth } from "../../providers/auth";
 import { useEffect } from "react";
+import { useSidebar } from "../../providers/sidebar";
 
 const Group = () => {
   const history = useHistory();
@@ -20,6 +24,10 @@ const Group = () => {
   const [isSub, setIsSub] = useState(false);
 
   const [groupData, setGroupData] = useState({});
+
+  const { openModalContact, setOpenModalContact } = useModal();
+
+  const { closeSidebar } = useSidebar();
 
   useEffect(() => {
     api
@@ -62,6 +70,11 @@ const Group = () => {
     history.push(path);
   };
 
+  const handleContact = () => {
+    setOpenModalContact(true);
+    closeSidebar();
+  };
+
   return (
     <div>
       <Header buttonText="Logout" buttonUrl="/" />
@@ -72,14 +85,20 @@ const Group = () => {
             Dashboard
           </button>
           <button onClick={() => handleNavigation("/groups")}>Grupos</button>
-          <button>Ajuda</button>
-          <button>Contato</button>
+          <button onClick={handleContact}>Contato</button>
         </div>
 
         <div>
           <button onClick={() => handleLogout("/")}>Logout</button>
         </div>
       </Sidebar>
+
+      {openModalContact && (
+        <Modal>
+          {" "}
+          <ModalContact />{" "}
+        </Modal>
+      )}
 
       <Container>
         <img src={groupImg} alt="groups illustration" />
