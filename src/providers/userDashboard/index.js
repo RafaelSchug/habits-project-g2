@@ -17,14 +17,16 @@ export const UserDashboardProvider = ({children}) => {
 
     const getHabits = (token) => {
         
-        api.get('/habits/personal/', {headers: {Authorization: `Bearer ${token}` }})
-        .then(response => {
-            sortHabitsByNotAchieved(response.data);
-            setToken(token);
+        if(token){
+            api.get('/habits/personal/', {headers: {Authorization: `Bearer ${token}` }})
+            .then(response => {
+                sortHabitsByNotAchieved(response.data);
+                setToken(token);
 
-            const userid = jwtDecode(token).user_id;
-            setUserId(userid);
-        })
+                const userid = jwtDecode(token).user_id;
+                setUserId(userid);
+            })
+        }
     }
         
     const updateHabit = (id) => {
