@@ -13,14 +13,13 @@ const ModalNewGoal = ({ groupId }) => {
   const { token } = useAuth();
 
   const schema = yup.object().shape({
-    title: yup.string().required("*Usuário obrigatório"),
-    difficulty: yup.string().required("*Digite uma senha"),
+    title: yup.string().required("*Digite um título"),
+    difficulty: yup.string().required("*Digite uma dificuldade"),
   });
 
   const {
     register,
     handleSubmit,
-    // formState: { errors },
     reset,
   } = useForm({ resolver: yupResolver(schema) });
 
@@ -35,7 +34,7 @@ const ModalNewGoal = ({ groupId }) => {
         reset();
         toast.success(`Nova meta: ${newData.title}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error('Ops! Algo deu errado.');
   };
 
   return (

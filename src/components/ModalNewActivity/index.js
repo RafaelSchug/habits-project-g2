@@ -13,14 +13,13 @@ const ModalNewActivity = ({ groupId }) => {
   const { token } = useAuth();
 
   const schema = yup.object().shape({
-    title: yup.string().required("*Usuário obrigatório"),
-    realization_time: yup.string().required("*Digite uma senha"),
+    title: yup.string().required("*Digite um título"),
+    realization_time: yup.string().required("*Escolha uma data"),
   });
 
   const {
     register,
     handleSubmit,
-    // formState: { errors },
     reset,
   } = useForm({ resolver: yupResolver(schema) });
 
@@ -39,7 +38,7 @@ const ModalNewActivity = ({ groupId }) => {
         reset();
         toast.success(`Nova atividade: ${newData.title}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error('Ops! Algo deu errado.');
   };
 
   return (
@@ -50,7 +49,7 @@ const ModalNewActivity = ({ groupId }) => {
           <div>
             <input placeholder="Título" type="text" {...register("title")} />
             <input
-              placeholder="Dificuldade"
+              placeholder="Data"
               type="datetime-local"
               {...register("realization_time")}
             />
