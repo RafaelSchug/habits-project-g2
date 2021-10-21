@@ -13,7 +13,8 @@ const Container = styled.div`
     text-align: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 3px 3px #3f3b3b;
+    /* box-shadow: 0px 0px 3px 3px #3f3b3b; */
+    filter: drop-shadow(0px 6px 5px #3F3B3B);
 
     h2 {
         font-size: 32px;

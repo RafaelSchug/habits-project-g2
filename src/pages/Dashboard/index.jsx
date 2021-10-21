@@ -58,8 +58,8 @@ const Dashboard = () => {
         <Header buttonText='Logout' buttonUrl='/'></Header>
         <Sidebar>
             <div>
-                <button>Dashboard</button>
-                <button onClick={()=> history.push('/groups')}>Groups</button>
+                <button onClick={()=> history.push('/dashboard')}>Hábitos</button>
+                <button onClick={()=> history.push('/groups')}>Grupos</button>
                 <button>Contato</button>
             </div>
             <div>

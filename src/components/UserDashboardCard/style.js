@@ -7,11 +7,18 @@ const Container = styled.div`
     max-width: 400px;
     background: #053f5ef0;
     padding: 10px 20px;
+    border: 2px solid transparent;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    box-shadow: 0px 0px 3px 3px #3f3b3b;
+    /* box-shadow: 0px 0px 3px 3px #3f3b3b; */
+    filter: drop-shadow(0px 6px 5px #3F3B3B);
+    transition: .15s linear;
+    
+    :hover {
+        border: 2px solid var(--default-yellow);
+    }
 
     .flex {
 
@@ -107,7 +114,7 @@ const Container = styled.div`
             min-width: 160px;
             height: 40px;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 10px;
             border: none;
             font-size: 16px;
             flex: 1;
