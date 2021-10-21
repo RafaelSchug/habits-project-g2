@@ -12,7 +12,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    /* box-shadow: 0px 0px 3px 3px #3f3b3b; */
     filter: drop-shadow(0px 6px 5px #3F3B3B);
     transition: .15s linear;
     
@@ -150,8 +149,7 @@ const Container = styled.div`
             align-items: center;
             gap: 4px;
             animation: achieved_anim .5s 1 ease-in-out;
-            pointer-events: none;
-
+            cursor: not-allowed;
         }
 
         @keyframes achieved_anim {
