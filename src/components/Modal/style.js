@@ -12,10 +12,23 @@ export const ModalContainer = styled.div`
   justify-content: center;
   z-index: 2;
 
+  > div {
+    animation: modalAnimation 1s 1 ease;
+  }
+
+  @keyframes modalAnimation {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
   #aboutModal {
     width: 250px;
     height: 400px;
     background-color: #0092dfcc;
+    box-shadow: 0 8px 32px 0 black;
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -107,6 +120,8 @@ export const ModalContainer = styled.div`
     width: 250px;
     height: 400px;
     background-color: #0092dfcc;
+    box-shadow: 0 8px 32px 0 black;
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -211,6 +226,8 @@ export const ModalContainer = styled.div`
     width: 250px;
     height: 350px;
     background-color: #0092dfcc;
+    box-shadow: 0 8px 32px 0 black;
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
