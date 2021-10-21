@@ -7,11 +7,18 @@ const Container = styled.div`
     max-width: 400px;
     background: #053f5ef0;
     padding: 10px 20px;
+    border: 2px solid transparent;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    box-shadow: 0px 0px 3px 3px #3f3b3b;
+    /* box-shadow: 0px 0px 3px 3px #3f3b3b; */
+    filter: drop-shadow(0px 6px 5px #3F3B3B);
+    transition: .15s linear;
+    
+    :hover {
+        border: 2px solid var(--default-yellow);
+    }
 
     .flex {
 
@@ -22,16 +29,47 @@ const Container = styled.div`
 
         .info_wrapper {
 
-            > h2{
-                padding: 5px 0;
-                font-size: 28px;
-                gap: 8px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1; /* numero máximo de linhas */
-                -webkit-box-orient: vertical;
+            .title_content {
+                
+                position: relative;
+
+                :hover span {
+                    display: block;
+                }
+
+                @keyframes text-anim {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-50px);
+                    }
+                }
+
+                span {
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    background: var(--default-black);
+                    color: var(--default-white);
+                    left: 0;
+                    top: 40px;
+                    padding: 10px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    animation: text-anim .3s 1 ease-in-out;
+                }
+
+                h2 {
+                    padding: 5px 0;
+                    font-size: 28px;
+                    gap: 8px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1; /* numero máximo de linhas */
+                    -webkit-box-orient: vertical;
+                }
             }
+
 
             p {
                 display:flex;
@@ -76,7 +114,7 @@ const Container = styled.div`
             min-width: 160px;
             height: 40px;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 10px;
             border: none;
             font-size: 16px;
             flex: 1;
