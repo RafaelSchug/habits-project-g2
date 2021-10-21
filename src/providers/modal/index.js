@@ -5,15 +5,15 @@ export const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const [openModalContact, setOpenModalContact] = useState(false);
   const [openModalAbout, setOpenModalAbout] = useState(false);
-
-  const modalOpenClick = () => {
-    setOpenModalContact(true);
-  };
+  const [openModalNewActivity, setOpenModalNewActivity] = useState(false);
+  const [openModalNewGoal, setOpenModalNewGoal] = useState(false);
 
   const modalCloseClick = (event) => {
     if (event.target.id === "modalContainer") {
       setOpenModalContact(false);
       setOpenModalAbout(false);
+      setOpenModalNewActivity(false);
+      setOpenModalNewGoal(false);
     }
   };
 
@@ -21,10 +21,13 @@ export const ModalProvider = ({ children }) => {
     <ModalContext.Provider
       value={{
         openModalAbout,
-        setOpenModalAbout,
         openModalContact,
+        openModalNewActivity,
+        openModalNewGoal,
+        setOpenModalAbout,
         setOpenModalContact,
-        modalOpenClick,
+        setOpenModalNewActivity,
+        setOpenModalNewGoal,
         modalCloseClick,
       }}
     >
