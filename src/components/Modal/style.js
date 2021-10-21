@@ -140,8 +140,14 @@ export const ModalContainer = styled.div`
           display: flex;
           justify-content: center;
           gap: 10px;
+
+          a {
+            width: 40px;
+            height: 40px;
+          }
+
           img {
-            width: 25%;
+            width: 100%;
             max-width: 50px;
           }
         }
@@ -166,6 +172,13 @@ export const ModalContainer = styled.div`
         .devProfile {
           h2 {
             font-size: 16px;
+          }
+
+          .devSocial {
+            a {
+              width: 50px;
+              height: 50px;
+            }
           }
         }
       }
