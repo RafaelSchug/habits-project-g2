@@ -4,10 +4,18 @@ import homeImage from "../../assets/vectors/home.svg";
 import { useHistory } from "react-router";
 import Sidebar from "../../components/Sidebar";
 import { useAuth } from "../../providers/auth";
+import { useModal } from "../../providers/modal";
+import ModalContact from "../../components/ModalContact";
+import ModalAbout from "../../components/ModalAbout";
+import Modal from "../../components/Modal";
+import { useSidebar } from "../../providers/sidebar";
 
 const Home = () => {
   const history = useHistory();
   const { isAuth } = useAuth();
+  const { openModalContact, setOpenModalContact, setOpenModalAbout, openModalAbout } = useModal();
+  const { closeSidebar } = useSidebar();
+
 
   const handleClick = (path) => {
     history.push(path);
@@ -17,15 +25,29 @@ const Home = () => {
     history.push("/dashboard");
   }
 
+  const handleContact = () => {
+      setOpenModalContact(true)
+      closeSidebar()
+  }
+
+  const handleAbout = () => {
+      setOpenModalAbout(true)
+      closeSidebar()
+  }
+
   return (
     <>
       <Header homePage buttonText="Registrar-se" buttonUrl="/register"></Header>
       <Sidebar>
         <div>
-          <button>Sobre</button>
-          <button>Contato</button>
+          <button onClick={handleAbout}>Sobre</button>
+          <button onClick={handleContact}>Contato</button>
         </div>
       </Sidebar>
+
+      {openModalContact && <Modal><ModalContact /></Modal>}
+      {openModalAbout && <Modal><ModalAbout /></Modal>}
+
       <Container>
         <div className="left_container">
           <div className="content_wrapper">
