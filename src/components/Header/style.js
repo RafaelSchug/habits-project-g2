@@ -7,9 +7,9 @@ export const HeaderContainer = styled.div`
   background-color: #0092df;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 2px 20px var(--default-black);
+  box-shadow: 0px 2px 5px var(--bg-secondary-color);
   padding: 5px;
-  z-index: 3;
+  z-index: 2;
 
   #menu-logo {
     display: flex;
