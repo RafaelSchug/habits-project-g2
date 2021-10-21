@@ -17,11 +17,9 @@ const ModalNewActivity = ({ groupId }) => {
     realization_time: yup.string().required("*Escolha uma data"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm({ resolver: yupResolver(schema) });
+  const { register, handleSubmit, reset } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const handleForm = (data) => {
     const newData = {
@@ -38,7 +36,7 @@ const ModalNewActivity = ({ groupId }) => {
         reset();
         toast.success(`Nova atividade: ${newData.title}`);
       })
-      .catch((err) => toast.error('Ops! Algo deu errado.');
+      .catch((err) => toast.error("Ops! Algo deu errado."));
   };
 
   return (
