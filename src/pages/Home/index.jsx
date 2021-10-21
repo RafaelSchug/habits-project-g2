@@ -4,9 +4,6 @@ import homeImage from "../../assets/vectors/home.svg";
 import { useHistory } from "react-router";
 import Sidebar from "../../components/Sidebar";
 import { useAuth } from "../../providers/auth";
-import { useModal } from "../../providers/modal";
-import Modal from "../../components/Modal";
-import ModalContact from "../../components/ModalContact";
 
 const Home = () => {
   const history = useHistory();
@@ -20,22 +17,15 @@ const Home = () => {
     history.push("/dashboard");
   }
 
-  const { modalOpenClick, openModalContact } = useModal();
-
   return (
     <>
       <Header homePage buttonText="Registrar-se" buttonUrl="/register"></Header>
       <Sidebar>
         <div>
           <button>Sobre</button>
-          <button onClick={modalOpenClick}>Contato</button>
+          <button>Contato</button>
         </div>
       </Sidebar>
-      {openModalContact && (
-        <Modal>
-          <ModalContact />
-        </Modal>
-      )}
       <Container>
         <div className="left_container">
           <div className="content_wrapper">
