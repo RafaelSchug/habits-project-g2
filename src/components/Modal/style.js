@@ -149,6 +149,10 @@ export const ModalContainer = styled.div`
           img {
             width: 100%;
             max-width: 50px;
+
+            :hover {
+              filter: brightness(0.9);
+            }
           }
         }
       }
@@ -162,6 +166,10 @@ export const ModalContainer = styled.div`
       height: 50px;
       font-size: 18px;
       font-weight: 550;
+
+      :hover {
+        filter: brightness(0.9);
+      }
     }
 
     @media screen and (min-width: 320px) {
@@ -236,6 +244,10 @@ export const ModalContainer = styled.div`
       height: 50px;
       font-size: 18px;
       font-weight: 550;
+
+      :hover {
+        filter: brightness(0.9);
+      }
     }
 
     @media screen and (min-width: 360px) {
@@ -269,6 +281,10 @@ export const ModalContainer = styled.div`
       button {
         width: 150px;
         height: 50px;
+      }
+
+      :hover {
+        filter: brightness(0.9);
       }
     }
   }
