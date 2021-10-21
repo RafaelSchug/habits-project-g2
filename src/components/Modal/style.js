@@ -140,9 +140,19 @@ export const ModalContainer = styled.div`
           display: flex;
           justify-content: center;
           gap: 10px;
+
+          a {
+            width: 40px;
+            height: 40px;
+          }
+
           img {
-            width: 25%;
+            width: 100%;
             max-width: 50px;
+
+            :hover {
+              filter: brightness(0.9);
+            }
           }
         }
       }
@@ -156,6 +166,10 @@ export const ModalContainer = styled.div`
       height: 50px;
       font-size: 18px;
       font-weight: 550;
+
+      :hover {
+        filter: brightness(0.9);
+      }
     }
 
     @media screen and (min-width: 320px) {
@@ -166,6 +180,13 @@ export const ModalContainer = styled.div`
         .devProfile {
           h2 {
             font-size: 16px;
+          }
+
+          .devSocial {
+            a {
+              width: 50px;
+              height: 50px;
+            }
           }
         }
       }
@@ -223,6 +244,10 @@ export const ModalContainer = styled.div`
       height: 50px;
       font-size: 18px;
       font-weight: 550;
+
+      :hover {
+        filter: brightness(0.9);
+      }
     }
 
     @media screen and (min-width: 360px) {
@@ -256,6 +281,10 @@ export const ModalContainer = styled.div`
       button {
         width: 150px;
         height: 50px;
+      }
+
+      :hover {
+        filter: brightness(0.9);
       }
     }
   }
