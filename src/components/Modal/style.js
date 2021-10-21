@@ -12,6 +12,97 @@ export const ModalContainer = styled.div`
   justify-content: center;
   z-index: 2;
 
+  #aboutModal {
+    width: 250px;
+    height: 400px;
+    background-color: #0092dfcc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+    text-shadow: 1px 1px 1px black;
+    padding: 0px 10px 0px 10px;
+
+    .textDiv {
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 20px;
+        right: 0px;
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        font-size: 18px;
+      }
+
+      p {
+        position: relative;
+        z-index: 1;
+        font-size: 12px;
+        width: 75%;
+      }
+    }
+
+    #communityDiv {
+      text-align: right;
+
+      img {
+        left: 0px;
+      }
+
+      p {
+        float: right;
+      }
+    }
+
+    button {
+      background-color: var(--default-yellow);
+      border: none;
+      border-radius: 10px;
+      width: 150px;
+      height: 50px;
+      font-size: 18px;
+      font-weight: 550;
+    }
+
+    @media screen and (min-width: 320px) {
+      width: 300px;
+      height: 450px;
+      padding: 0px 10px 0px 10px;
+
+      .textDiv {
+        h1 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+
+    @media screen and (min-width: 700px) {
+      width: 600px;
+      height: 750px;
+      padding: 0px 60px 0px 60px;
+
+      .textDiv {
+        h1 {
+          font-size: 36px;
+        }
+
+        p {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+
   #contactModal {
     width: 250px;
     height: 400px;
