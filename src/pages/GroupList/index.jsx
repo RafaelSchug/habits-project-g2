@@ -30,7 +30,7 @@ const GroupList = () => {
 
   const { openModalContact, setOpenModalContact } = useModal()
 
-  const filter = groups.filter(element => element.name.includes(input))
+  const filter = groups.filter(element => element.name.toLowerCase().includes(input))
 
   const schema = yup.object().shape({
     name: yup
@@ -99,8 +99,10 @@ const GroupList = () => {
           <button onClick={() => handleLogout("/")} >Logout</button>
         </div>
       </Sidebar>
-
-      {openModalContact && <Modal > <ModalContact /> </Modal>}
+      {
+        openModalContact &&
+        <Modal > <ModalContact /> </Modal>
+      }
 
       <Container>
         <img src={groupsImage} alt="groups illustration" />
@@ -133,7 +135,6 @@ const GroupList = () => {
               <form id="searchForm" >
                 <input value={input} onChange={e => setInput(e.target.value)}
                   id="searchInput" placeholder="Pesquisar por nome" />
-                {/* <button id="searchButton" >Pesquisar</button> */}
               </form>
             </div>
 
@@ -154,16 +155,10 @@ const GroupList = () => {
                         <div id="notFound" >Nenhum grupo encontrado</div>
                         :
                         <div id="searching" >Carregando...</div>
-
                 }
               </div>
 
             </div>
-
-            {/* <div id="buttonsContainer" >
-              <button onClick={previousPage}>Anterior</button>
-              <button onClick={nextPage}>Próxima</button>
-            </div> */}
           </GroupsContainer>
         </div>
       </Container>
