@@ -13,6 +13,9 @@ import { useHistory } from "react-router";
 import { useUserDashboard } from "../../providers/userDashboard";
 import { useEffect } from "react";
 import { useAuth } from "../../providers/auth";
+import Modal from "../../components/Modal";
+import ModalContact from "../../components/ModalContact";
+import { useModal } from "../../providers/modal";
 
 
 const Dashboard = () => {
@@ -52,15 +55,21 @@ const Dashboard = () => {
         }
         history.push(path);
     };
+
+    const {
+        openModalContact,
+        setOpenModalContact,
+      } = useModal();
     
     return (
         <>
+        {openModalContact && <Modal><ModalContact /></Modal>}
         <Header buttonText='Logout' buttonUrl='/'></Header>
         <Sidebar>
             <div>
                 <button onClick={()=> history.push('/dashboard')}>Hábitos</button>
                 <button onClick={()=> history.push('/groups')}>Grupos</button>
-                <button>Contato</button>
+                <button onClick={()=> setOpenModalContact(true)}>Contato</button>
             </div>
             <div>
                 <button onClick={()=> {handleClick('/')}}>Logout</button>
