@@ -7,9 +7,23 @@ import * as yup from "yup";
 import { Content, Container, Background } from "./style";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
+import { useModal } from "../../providers/modal";
+import ModalAbout from "../../components/ModalAbout";
+import ModalContact from "../../components/ModalContact";
+import Modal from "../../components/Modal";
+import { useSidebar } from "../../providers/sidebar";
 
 const Register = () => {
   const history = useHistory();
+
+  const { closeSidebar } = useSidebar();
+
+  const {
+    openModalContact,
+    openModalAbout,
+    setOpenModalContact,
+    setOpenModalAbout,
+  } = useModal();
 
   const formSchema = yup.object().shape({
     username: yup.string().required("*Nome de usuário obrigatório"),
@@ -41,15 +55,35 @@ const Register = () => {
       .catch((err) => "Email already in use!");
   };
 
+  const handleContact = () => {
+    setOpenModalContact(true);
+    closeSidebar();
+  };
+
+  const handleAbout = () => {
+    setOpenModalAbout(true);
+    closeSidebar();
+  };
+
   return (
     <div>
       <Header buttonText="Login" buttonUrl="/login" />
       <Sidebar>
         <div>
-          <button>Sobre</button>
-          <button>Contato</button>
+          <button onClick={handleAbout}>Sobre</button>
+          <button onClick={handleContact}>Contato</button>
         </div>
       </Sidebar>
+      {openModalContact && (
+        <Modal>
+          <ModalContact />
+        </Modal>
+      )}
+      {openModalAbout && (
+        <Modal>
+          <ModalAbout />
+        </Modal>
+      )}
       <Container>
         <Background />
         <Content>
