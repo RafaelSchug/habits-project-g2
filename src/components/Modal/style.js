@@ -214,39 +214,49 @@ export const ModalContainer = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
 
     h1 {
       color: var(--default-white);
     }
 
     div {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-      input {
-        width: 230px;
-        height: 50px;
-        border: none;
-        border-radius: 10px;
-        padding: 0px 10px 0px 10px;
-        font-size: 18px;
-      }
-    }
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          margin-bottom: 50px;
+        }
 
-    button {
-      background-color: var(--default-yellow);
-      border: none;
-      border-radius: 10px;
-      width: 150px;
-      height: 50px;
-      font-size: 18px;
-      font-weight: 550;
+        input {
+          width: 230px;
+          height: 50px;
+          border: none;
+          border-radius: 10px;
+          padding: 0px 10px 0px 10px;
+          font-size: 18px;
+        }
 
-      :hover {
-        filter: brightness(0.9);
+        button {
+          background-color: var(--default-yellow);
+          border: none;
+          border-radius: 10px;
+          width: 150px;
+          height: 50px;
+          font-size: 18px;
+          font-weight: 550;
+
+          :hover {
+            filter: brightness(0.9);
+          }
+        }
       }
     }
 
