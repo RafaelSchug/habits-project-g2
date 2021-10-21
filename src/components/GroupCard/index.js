@@ -5,13 +5,13 @@ import { GroupCard } from "./style"
 import { BiCategory } from 'react-icons/bi';
 import { BsCardText } from 'react-icons/bs'
 import jwt_decode from "jwt-decode";
-import { useGroupList } from "../../providers/groupList";
+import { useState } from "react";
 
 const Card = ({ element: { id, name, description, category, users_on_group } }) => {
 
     const { token } = useAuth()
 
-    const { setGroups, setNext } = useGroupList()
+    const [sub, setSub] = useState(false)
 
     const history = useHistory()
 
@@ -23,9 +23,7 @@ const Card = ({ element: { id, name, description, category, users_on_group } }) 
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then(response => {
-                console.log(response)
-                setGroups([])
-                setNext(`https://kenzie-habits.herokuapp.com/groups/`)
+                setSub(true)
             })
             .catch(err => console.log(err))
     }
@@ -39,9 +37,9 @@ const Card = ({ element: { id, name, description, category, users_on_group } }) 
             <h2>{name}</h2>
             <p><BsCardText />Descrição: {description}</p>
             <p><BiCategory />Categoria: {category}</p>
-            <div id="" >
+            <div id="subsButtons" >
                 {
-                    subscribed ? <button id="subscribed">Inscrito</button>
+                    sub || subscribed ? <button id="subscribed">Inscrito</button>
                         :
                         <button id="subsButton" onClick={handleSubscription} >Inscrever-se</button>
                 }

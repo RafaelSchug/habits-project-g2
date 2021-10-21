@@ -77,9 +77,8 @@ const GroupList = () => {
       <Header buttonText="Logout" buttonUrl="/" />
       <Sidebar>
         <div>
-          <button onClick={() => handleNavigation("/dashboard")} >Dashboard</button>
+          <button onClick={() => handleNavigation("/dashboard")} >Hábitos</button>
           <button onClick={() => handleNavigation("/groups")} >Grupos</button>
-          <button>Ajuda</button>
           <button>Contato</button>
         </div>
 

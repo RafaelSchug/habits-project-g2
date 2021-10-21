@@ -89,6 +89,7 @@ align-items: center;
 background-color: var(--bg-secondary-color);
 border-radius: 10px;
 filter: drop-shadow(0px 0px 5px #3F3B3B);
+animation: form_anim .5s 1 ease-in-out; 
 
     .inputs {
         height: 82px;
@@ -112,6 +113,13 @@ filter: drop-shadow(0px 0px 5px #3F3B3B);
                 filter: brightness(0.9);
             }
         }
+
+@keyframes form_anim {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
 
 @media screen and (max-width: 768px) {
     min-width: 265px;
@@ -146,6 +154,7 @@ max-height: 90%;
     max-width: 630px;
     min-width: 315px;
     filter: drop-shadow(0px 0px 10px #3F3B3B);
+    animation: search_anim .5s 1 ease-in-out; 
 
     h2 {
         margin-top: 0;
@@ -158,12 +167,13 @@ max-height: 90%;
         display: flex;
         flex-direction: row;
         margin: 10px;
+        justify-content: center;
     }
 
     #searchInput {
         width: 90%;
         margin-bottom: 0;
-        border-radius: 5px 0 0 5px;
+        border-radius: 5px;
     }
 
     #searchButton {
@@ -214,6 +224,13 @@ max-height: 90%;
             font-size: 22px;
             font-weight: 600;
         }
+
+        > :nth-child(even){
+            animation: card_anim .6s 1 ease-in-out;
+        }
+        > :nth-child(odd){
+            animation: card_anim .5s 1 ease-in-out;
+        }
     }
 
     #buttonsContainer {
@@ -235,6 +252,23 @@ max-height: 90%;
         }
     }
 
+    @keyframes search_anim {
+        from {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+    }
+
+    @keyframes card_anim {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        70% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    }
 
     @media screen and (max-width: 768px) {
         justify-content: flex-start;

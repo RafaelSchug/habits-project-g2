@@ -48,14 +48,20 @@ filter: drop-shadow(0px 6px 5px #3F3B3B);
         background: transparent;
         border: 2px solid var(--default-white);
         color: var(--default-white);
-        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    #subsButtons {
+        display: flex;
+        justify-content: space-around;
+        gap: 5px;
     }
 
 @media screen and (max-width: 768px) {
-    min-width: 270px;
+    min-width: 260px;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 95%;
+    width: 80%;
     height: auto;
     max-width: 400px;
 
@@ -65,12 +71,6 @@ filter: drop-shadow(0px 6px 5px #3F3B3B);
 
     p {
         margin-bottom: 20px;
-        /* overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; 
-        -webkit-box-orient: vertical;
-        text-align: start; */
     }
 }
 `
