@@ -65,6 +65,7 @@ const Dashboard = () => {
     
     return (
         <>
+        {openModalContact && <Modal><ModalContact /></Modal>}
         <Header buttonText='Logout' buttonUrl='/'></Header>
         <Sidebar>
             <div>
