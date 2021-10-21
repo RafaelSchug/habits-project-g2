@@ -23,6 +23,7 @@ const Dashboard = () => {
     const history = useHistory();
     const { habits, updateHabit, deleteHabit, createHabit, getHabits} = useUserDashboard();
     const {token, isAuth, writeToken, setIsAuth} = useAuth();
+    const { openModalContact, setOpenModalContact } = useModal();
     
 
     const schema = yup.object().shape({
@@ -56,11 +57,6 @@ const Dashboard = () => {
         history.push(path);
     };
 
-    const {
-        openModalContact,
-        setOpenModalContact,
-      } = useModal();
-    
     return (
         <>
         {openModalContact && <Modal><ModalContact /></Modal>}
