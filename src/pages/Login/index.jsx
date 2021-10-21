@@ -1,6 +1,8 @@
 import { LoginContainer } from "./style";
 import { useAuth } from "../../providers/auth";
 import { useForm } from "react-hook-form";
+import { useModal } from "../../providers/modal";
+import { useSidebar } from "../../providers/sidebar";
 import { Redirect, useHistory } from "react-router";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -9,9 +11,23 @@ import Header from "../../components/Header";
 import LoginSvg from "../../assets/vectors/login.svg";
 import Sidebar from "../../components/Sidebar";
 import * as yup from "yup";
+import Modal from "../../components/Modal";
+import ModalContact from "../../components/ModalContact";
+import ModalAbout from "../../components/ModalAbout";
 
 const Login = () => {
   const history = useHistory();
+
+  const { token, writeToken } = useAuth();
+
+  const { closeSidebar } = useSidebar();
+
+  const {
+    openModalContact,
+    openModalAbout,
+    setOpenModalContact,
+    setOpenModalAbout,
+  } = useModal();
 
   const schema = yup.object().shape({
     username: yup.string().required("*Usuário obrigatório"),
@@ -23,8 +39,6 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-
-  const { token, writeToken } = useAuth();
 
   const handleForm = (data) => {
     api
@@ -38,6 +52,16 @@ const Login = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleAbout = () => {
+    setOpenModalAbout(true);
+    closeSidebar();
+  };
+
+  const handleContact = () => {
+    setOpenModalContact(true);
+    closeSidebar();
+  };
+
   if (token) {
     return <Redirect to="/dashboard" />;
   }
@@ -47,10 +71,20 @@ const Login = () => {
       <Header buttonText="Registrar-se" buttonUrl="/register" />
       <Sidebar>
         <div>
-          <button>Sobre</button>
-          <button>Contato</button>
+          <button onClick={handleAbout}>Sobre</button>
+          <button onClick={handleContact}>Contato</button>
         </div>
       </Sidebar>
+      {openModalContact && (
+        <Modal>
+          <ModalContact />
+        </Modal>
+      )}
+      {openModalAbout && (
+        <Modal>
+          <ModalAbout />
+        </Modal>
+      )}
       <div id="loginMainContainer">
         <form onSubmit={handleSubmit(handleForm)}>
           <h1>Login</h1>
