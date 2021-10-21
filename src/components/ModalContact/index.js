@@ -11,14 +11,14 @@ import { useModal } from "../../providers/modal";
 import { useSidebar } from "../../providers/sidebar";
 
 const ModalContact = () => {
-  const { setOpenModal, openModal } = useModal();
+  const { setOpenModalContact, openModalContact } = useModal();
   const { closeSidebar } = useSidebar();
 
   useEffect(() => {
-    if (openModal) {
+    if (openModalContact) {
       closeSidebar();
     }
-  }, [openModal]);
+  }, [openModalContact]);
 
   return (
     <Modal>
@@ -57,9 +57,10 @@ const ModalContact = () => {
             </div>
           </div>
         </div>
-        <button onClick={() => setOpenModal(false)}>Fechar</button>
+        <button onClick={() => setOpenModalContact(false)}>Fechar</button>
       </div>
     </Modal>
   );
 };
+
 export default ModalContact;
