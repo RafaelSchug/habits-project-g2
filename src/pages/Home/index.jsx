@@ -3,19 +3,19 @@ import { Container } from "./style";
 import homeImage from "../../assets/vectors/home.svg";
 import { useHistory } from "react-router";
 import Sidebar from "../../components/Sidebar";
-import {useAuth} from '../../providers/auth';
+import { useAuth } from "../../providers/auth";
 
 const Home = () => {
   const history = useHistory();
-  const {isAuth} = useAuth();
+  const { isAuth } = useAuth();
 
   const handleClick = (path) => {
     history.push(path);
   };
 
-  if(isAuth){
-      history.push('/dashboard');
-  } 
+  if (isAuth) {
+    history.push("/dashboard");
+  }
 
   return (
     <>
