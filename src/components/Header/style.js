@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
+  position: sticky;
+  top: 0px;
   height: 60px;
+  background-color: #0092df;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0px 2px 20px var(--default-black);
   padding: 5px;
+  z-index: 3;
 
   #menu-logo {
     display: flex;
