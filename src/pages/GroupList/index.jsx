@@ -14,12 +14,15 @@ import { useState } from "react";
 import { useModal } from "../../providers/modal";
 import ModalContact from "../../components/ModalContact";
 import Modal from "../../components/Modal";
+import { useSidebar } from "../../providers/sidebar";
 
 const GroupList = () => {
 
   const history = useHistory()
 
   const [input, setInput] = useState("")
+
+  const { closeSidebar } = useSidebar()
 
   const { token, isAuth, setIsAuth, writeToken } = useAuth()
 
@@ -75,7 +78,12 @@ const GroupList = () => {
       setIsAuth(false);
     }
     history.push(path);
-  };
+  }
+
+  const handleContact = () => {
+    setOpenModalContact(true)
+    closeSidebar()
+  }
 
   return (
     <div>
@@ -84,7 +92,7 @@ const GroupList = () => {
         <div>
           <button onClick={() => handleNavigation("/dashboard")} >Hábitos</button>
           <button onClick={() => handleNavigation("/groups")} >Grupos</button>
-          <button onClick={() => setOpenModalContact(true)} >Contato</button>
+          <button onClick={handleContact} >Contato</button>
         </div>
 
         <div>
