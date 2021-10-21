@@ -104,31 +104,26 @@ export const Container = styled.div`
         gap: 20px;
 
         button {
-            width: 150px;
-            height: 35px;
+            width: 200px;
+            height: 50px;
             font-size: 18px;
             border-radius: 5px;
             transition: transform .1s linear, border .1s linear;
+
+            :hover {
+                transform: scale(1.1);
+            }
         }
 
         .login_button {
             background: transparent;
             color: var(--default-white);
             border: 1px solid var(--default-white);
-            
-            :hover {
-                transform: scale(1.2);
-            }
         }
 
         .register_button {
             background: var(--default-yellow);
             border: none;
-
-            :hover {
-                transform: scale(1.2);
-            }
-
         }
 
     }
