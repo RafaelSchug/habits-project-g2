@@ -34,6 +34,7 @@ transition: .15s linear;
         display: -webkit-box;
         -webkit-line-clamp: 3; 
         -webkit-box-orient: vertical;
+        -moz-box-align: start;
     }
 
     button {

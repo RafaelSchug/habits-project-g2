@@ -40,7 +40,10 @@ const GroupList = () => {
   const filter = groups.filter(element => (
     element.name.toLowerCase().includes(input) ||
     element.description.toLowerCase().includes(input) ||
-    element.category.toLowerCase().includes(input)
+    element.category.toLowerCase().includes(input) ||
+    element.name.includes(input) ||
+    element.description.includes(input) ||
+    element.category.includes(input)
   ))
 
   const schema = yup.object().shape({

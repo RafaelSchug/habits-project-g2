@@ -221,6 +221,7 @@ max-height: 90%;
     #groupsContainer {
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
 
         #notFound, #searching {
             color: var(--default-yellow);
