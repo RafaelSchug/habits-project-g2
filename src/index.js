@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToastContainer />
+    <ToastContainer theme='colored' autoClose={2500}/>
     <Providers>
       <BrowserRouter>
         <App />
