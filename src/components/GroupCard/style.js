@@ -28,6 +28,15 @@ transition: .15s linear;
         }
     }
 
+    #desc {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; 
+        -webkit-box-orient: vertical;
+        -moz-box-align: start;
+    }
+
     button {
         width: 130px;
         height: 40px;

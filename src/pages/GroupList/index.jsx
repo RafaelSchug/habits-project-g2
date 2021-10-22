@@ -10,13 +10,20 @@ import api from "../../services/api";
 import { useAuth } from "../../providers/auth";
 import { useGroupList } from "../../providers/groupList";
 import Card from "../../components/GroupCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from "../../providers/modal";
 import ModalContact from "../../components/ModalContact";
 import Modal from "../../components/Modal";
 import { useSidebar } from "../../providers/sidebar";
+import { toast } from "react-toastify";
 
 const GroupList = () => {
+
+  useEffect(() => {
+    if (token) {
+      closeSidebar()
+    }
+  }, [])
 
   const history = useHistory()
 
@@ -30,7 +37,14 @@ const GroupList = () => {
 
   const { openModalContact, setOpenModalContact } = useModal()
 
-  const filter = groups.filter(element => element.name.includes(input))
+  const filter = groups.filter(element => (
+    element.name.toLowerCase().includes(input) ||
+    element.description.toLowerCase().includes(input) ||
+    element.category.toLowerCase().includes(input) ||
+    element.name.includes(input) ||
+    element.description.includes(input) ||
+    element.category.includes(input)
+  ))
 
   const schema = yup.object().shape({
     name: yup
@@ -59,11 +73,15 @@ const GroupList = () => {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
+        toast.success("Grupo adicionado!")
         reset()
         setGroups([])
         setNext(`https://kenzie-habits.herokuapp.com/groups/`)
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        toast.error("Erro ao adicionar")
+      })
 
   }
 
@@ -99,8 +117,10 @@ const GroupList = () => {
           <button onClick={() => handleLogout("/")} >Logout</button>
         </div>
       </Sidebar>
-
-      {openModalContact && <Modal > <ModalContact /> </Modal>}
+      {
+        openModalContact &&
+        <Modal > <ModalContact /> </Modal>
+      }
 
       <Container>
         <img src={groupsImage} alt="groups illustration" />
@@ -132,8 +152,7 @@ const GroupList = () => {
               <h2>Pesquisar Grupo</h2>
               <form id="searchForm" >
                 <input value={input} onChange={e => setInput(e.target.value)}
-                  id="searchInput" placeholder="Pesquisar por nome" />
-                {/* <button id="searchButton" >Pesquisar</button> */}
+                  id="searchInput" placeholder="Pesquisar grupo" />
               </form>
             </div>
 
@@ -154,16 +173,9 @@ const GroupList = () => {
                         <div id="notFound" >Nenhum grupo encontrado</div>
                         :
                         <div id="searching" >Carregando...</div>
-
                 }
               </div>
-
             </div>
-
-            {/* <div id="buttonsContainer" >
-              <button onClick={previousPage}>Anterior</button>
-              <button onClick={nextPage}>Próxima</button>
-            </div> */}
           </GroupsContainer>
         </div>
       </Container>

@@ -63,10 +63,13 @@ margin: 0 auto;
     }
 
     @media screen and (max-width: 768px) {
+        height: 100%;
+        margin-top: 40px;
+        
         #content {
             flex-direction: column;
             justify-content: flex-start;
-            height: calc(100vh - 100px);
+            height: 100%;
             gap: 30px;
             align-items: center;
         }
@@ -218,6 +221,7 @@ max-height: 90%;
     #groupsContainer {
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
 
         #notFound, #searching {
             color: var(--default-yellow);
@@ -274,6 +278,7 @@ max-height: 90%;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    height: 100%;
 
     #groups {
         overflow-y: initial;

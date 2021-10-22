@@ -35,7 +35,7 @@ const Card = ({ element: { id, name, description, category, users_on_group } }) 
     return (
         <GroupCard id="card" >
             <h2>{name}</h2>
-            <p><BsCardText />Descrição: {description}</p>
+            <p id="desc"><BsCardText />Descrição: {description}</p>
             <p><BiCategory />Categoria: {category}</p>
             <div id="subsButtons" >
                 {
