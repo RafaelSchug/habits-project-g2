@@ -9,7 +9,7 @@ import ModalContact from "../../components/ModalContact";
 import ModalAbout from "../../components/ModalAbout";
 import Modal from "../../components/Modal";
 import { useSidebar } from "../../providers/sidebar";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 const Home = () => {
   const history = useHistory();

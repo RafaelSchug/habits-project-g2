@@ -17,11 +17,53 @@ export default createGlobalStyle`
         --default-black: #232323;
         --default-yellow: #FFEA29;
         --default-white: #F7F9F9;
-        --default-gradient: linear-gradient(0deg, #053F5E, #0092DF)
+        --default-gradient: linear-gradient(0deg, #053F5E, #0092DF);
+
+        --toastify-color-light: #fff;
+        --toastify-color-dark: #121212;
+        --toastify-color-info: #3498db;
+        --toastify-color-success: purple;
+        --toastify-color-warning: #f1c40f;
+        --toastify-color-error: #e74c3c;
+
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--success {
+        color: var(--toastify-text-color-success);
+        background: var(--default-yellow);
+        border: 2px solid var(--default-black);
+        border-radius: 10px;
+        color: var(--default-black);
+
+        .Toastify__progress-bar {
+            background: var(--default-black);
+        }
+
+        .Toastify__close-button--colored {
+            
+            color: var(--default-black);
+        }
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--error, .Toastify__toast-theme--colored.Toastify__toast--warning {
+        color: var(--toastify-text-color-success);
+        background: var(--default-black);
+        border: 2px solid var(--default-yellow);
+        border-radius: 10px;
+        color: var(--default-yellow);
+
+        .Toastify__progress-bar {
+            background: var(--default-yellow);
+        }
+
+        .Toastify__close-button--colored {
+            
+            color: var(--default-black);
+        }
     }
 
     body {
-        /* background: var(--bg-primary-color); */
+        
         background: var(--default-gradient);
         background-attachment: fixed;
         color: var(--default-white);
