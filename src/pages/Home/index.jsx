@@ -9,6 +9,7 @@ import ModalContact from "../../components/ModalContact";
 import ModalAbout from "../../components/ModalAbout";
 import Modal from "../../components/Modal";
 import { useSidebar } from "../../providers/sidebar";
+import { useEffect } from "react/cjs/react.development";
 
 const Home = () => {
   const history = useHistory();
@@ -24,6 +25,10 @@ const Home = () => {
   if (isAuth) {
     history.push("/dashboard");
   }
+
+  useEffect(()=> {
+      closeSidebar()
+  }, [])
 
   const handleContact = () => {
       setOpenModalContact(true)
@@ -61,7 +66,7 @@ const Home = () => {
               <p>Estabeleça metas</p>
               <p>Produza com eficiência</p>
             </div>
-            <img src={homeImage} alt="home image" />
+            <img src={homeImage} alt="ilustration" />
           </div>
         </div>
         <div className="right_container">
