@@ -14,6 +14,7 @@ import * as yup from "yup";
 import Modal from "../../components/Modal";
 import ModalContact from "../../components/ModalContact";
 import ModalAbout from "../../components/ModalAbout";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const history = useHistory();
@@ -48,8 +49,9 @@ const Login = () => {
         localStorage.setItem("token", JSON.stringify(response.data.access));
         writeToken(response.data.access);
         history.push("/dashboard");
+        toast.success(`Bem vindo, ${data.username}!`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("Usuário ou senha incorretos"));
   };
 
   const handleAbout = () => {
