@@ -1,6 +1,9 @@
 import jwtDecode from 'jwt-decode';
 import {createContext, useContext, useState} from 'react';
 import api from '../../services/api';
+import { toast } from 'react-toastify';
+
+
 const UserDashboardContext = createContext();
 
 export const UserDashboardProvider = ({children}) => {
@@ -38,6 +41,9 @@ export const UserDashboardProvider = ({children}) => {
         api.patch(`/habits/${id}/`, {'how_much_achieved': newHowMuchAchieved, 'achieved': isAchieved}, {headers: {Authorization: `Bearer ${token}` }})
         .then(response => {
             setHabits(habits.map(item => item.id === id ? {...item, how_much_achieved: newHowMuchAchieved, achieved: isAchieved} : item));
+            toast.success("Check-in efetuado");
+        }).catch(error => {
+            toast.error("Falha ao efetuar Check-in");
         });
     }
 
@@ -46,6 +52,10 @@ export const UserDashboardProvider = ({children}) => {
         api.delete(`/habits/${id}/`, {headers: {Authorization: `Bearer ${token}` }})
         .then((response) => {
             setHabits(habits.filter(item => item.id !== id));
+            toast.success("Hábito removido")
+        })
+        .catch(error => {
+            toast.error("Falha ao remover hábito")
         })
     }
 
@@ -55,6 +65,10 @@ export const UserDashboardProvider = ({children}) => {
         api.post('/habits/', schema, {headers: {Authorization: `Bearer ${token}` }})
         .then(response => {
             setHabits([...habits, {...schema, id: response.data.id}]);
+            toast.success("Hábito adicionado")
+        })
+        .catch(error => {
+            toast.error('Falha ao criar hábito');
         })
     }
 

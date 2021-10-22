@@ -12,10 +12,23 @@ export const ModalContainer = styled.div`
   justify-content: center;
   z-index: 2;
 
+  > div {
+    animation: modalAnimation 1s 1 ease;
+  }
+
+  @keyframes modalAnimation {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
   #aboutModal {
     width: 250px;
     height: 400px;
     background-color: #0092dfcc;
+    box-shadow: 0 8px 32px 0 black;
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -107,6 +120,8 @@ export const ModalContainer = styled.div`
     width: 250px;
     height: 400px;
     background-color: #0092dfcc;
+    box-shadow: 0 8px 32px 0 black;
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -211,42 +226,54 @@ export const ModalContainer = styled.div`
     width: 250px;
     height: 350px;
     background-color: #0092dfcc;
+    box-shadow: 0 8px 32px 0 black;
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
 
     h1 {
       color: var(--default-white);
     }
 
     div {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-      input {
-        width: 230px;
-        height: 50px;
-        border: none;
-        border-radius: 10px;
-        padding: 0px 10px 0px 10px;
-        font-size: 18px;
-      }
-    }
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          margin-bottom: 50px;
+        }
 
-    button {
-      background-color: var(--default-yellow);
-      border: none;
-      border-radius: 10px;
-      width: 150px;
-      height: 50px;
-      font-size: 18px;
-      font-weight: 550;
+        input {
+          width: 230px;
+          height: 50px;
+          border: none;
+          border-radius: 10px;
+          padding: 0px 10px 0px 10px;
+          font-size: 18px;
+        }
 
-      :hover {
-        filter: brightness(0.9);
+        button {
+          background-color: var(--default-yellow);
+          border: none;
+          border-radius: 10px;
+          width: 150px;
+          height: 50px;
+          font-size: 18px;
+          font-weight: 550;
+
+          :hover {
+            filter: brightness(0.9);
+          }
+        }
       }
     }
 
