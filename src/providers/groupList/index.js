@@ -9,7 +9,9 @@ export const GroupListProvider = ({ children }) => {
 
     const [next, setNext] = useState(`https://kenzie-habits.herokuapp.com/groups/`)
 
-    const bannedWords = ["test", "palm", "jerly", "laud", "relig", "anda", "novo", "pepe", "casa", "robert", "ler"]
+    const bannedWords = ["pedro", "pdro", "test", "palm", "jerly", "laud", "relig", "anda",
+        "novo", "pepe", "casa", "robert", "ler"
+    ]
 
     useEffect(() => {
         next &&
