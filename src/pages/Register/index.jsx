@@ -54,7 +54,7 @@ const Register = () => {
         toast.success("Cadastro realizado com sucesso!");
         return history.push("/login");
       })
-      .catch((err) => "Email already in use!");
+      .catch((err) => toast.error("Email já está em uso!"));
   };
 
   const handleContact = () => {
