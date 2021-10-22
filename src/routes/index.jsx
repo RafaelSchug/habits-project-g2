@@ -13,26 +13,26 @@ const Routes = () => {
     return (
         <Switch>
             <Route exact path='/'>
-                <Home/>
+                <Home />
             </Route>
             <Route exact path='/register'>
-                <Register/>
+                <Register />
             </Route>
             <Route exact path='/login'>
-                <Login/>
+                <Login />
             </Route>
             <Route exact path='/dashboard'>
-                <Dashboard/>
+                <Dashboard />
             </Route>
             <Route exact path='/groups'>
-                <GroupList/>
+                <GroupList />
             </Route>
             <Route exact path='/groups/:id'>
-                <Group/>
+                <Group />
             </Route>
-            {/* <Route >
-                {history.push('/')}
-            </Route> */}
+            <Route >
+                {() => history.push('/')}
+            </Route>
         </Switch>
     )
 
