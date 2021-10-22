@@ -12,6 +12,7 @@ import ModalAbout from "../../components/ModalAbout";
 import ModalContact from "../../components/ModalContact";
 import Modal from "../../components/Modal";
 import { useSidebar } from "../../providers/sidebar";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const history = useHistory();
@@ -50,9 +51,10 @@ const Register = () => {
     api
       .post("/users/", { username, email, password })
       .then(() => {
+        toast.success("Cadastro realizado com sucesso!");
         return history.push("/login");
       })
-      .catch((err) => "Email already in use!");
+      .catch((err) => toast.error("Email já está em uso!"));
   };
 
   const handleContact = () => {
