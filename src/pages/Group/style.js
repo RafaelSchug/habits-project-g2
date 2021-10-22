@@ -44,9 +44,6 @@ export const Container = styled.div`
     border-radius: 10px;
     filter: drop-shadow(0px 0px 10px #3f3b3b);
     animation: left_cont 0.5s 1 ease-in-out;
-    #edit {
-      width: 80px;
-    }
   }
 
   #modals {

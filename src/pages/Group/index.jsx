@@ -6,6 +6,8 @@ import groupImg from "../../assets/vectors/background_dashboard_specific_group.s
 import GoalCard from "../../components/GoalCard";
 import ActivityCard from "../../components/ActivityCard";
 import ModalContact from "../../components/ModalContact";
+import ModalNewActivity from "../../components/ModalNewActivity";
+import ModalNewGoal from "../../components/ModalNewGoal";
 import Modal from "../../components/Modal";
 import api from "../../services/api";
 import { useModal } from "../../providers/modal";
@@ -26,6 +28,10 @@ const Group = () => {
   const [groupData, setGroupData] = useState({});
 
   const { openModalContact, setOpenModalContact } = useModal();
+
+  const { openModalNewGoal, setOpenModalNewGoal } = useModal();
+
+  const { openModalNewActivity, setOpenModalNewActivity } = useModal();
 
   const { closeSidebar } = useSidebar();
 
@@ -82,7 +88,7 @@ const Group = () => {
       <Sidebar>
         <div>
           <button onClick={() => handleNavigation("/dashboard")}>
-            Dashboard
+            Hábitos
           </button>
           <button onClick={() => handleNavigation("/groups")}>Grupos</button>
           <button onClick={handleContact}>Contato</button>
@@ -92,6 +98,18 @@ const Group = () => {
           <button onClick={() => handleLogout("/")}>Logout</button>
         </div>
       </Sidebar>
+
+      {openModalNewGoal && (
+        <Modal>
+          <ModalNewGoal groupId={params.id} />
+        </Modal>
+      )}
+
+      {openModalNewActivity && (
+        <Modal>
+          <ModalNewActivity groupId={params.id} />
+        </Modal>
+      )}
 
       {openModalContact && (
         <Modal>
@@ -106,7 +124,6 @@ const Group = () => {
           <div id="groupCard">
             <div className="head">
               <h2> {groupData.name} </h2>
-              <Button id="edit">Editar</Button>
             </div>
             <p> {groupData.category} </p>
             <p> {groupData.description} </p>
@@ -114,11 +131,15 @@ const Group = () => {
           <div id="modals">
             <div>
               <h3>Nova Meta</h3>
-              <Button>Adicionar</Button>
+              <Button onClick={() => setOpenModalNewGoal(true)}>
+                Adicionar
+              </Button>
             </div>
             <div>
               <h3>Nova Atividade</h3>
-              <Button>Adicionar</Button>
+              <Button onClick={() => setOpenModalNewActivity(true)}>
+                Adicionar
+              </Button>
             </div>
           </div>
           <div id="scroll">
@@ -143,7 +164,7 @@ const Group = () => {
 
         <div id="members">
           <div className="head">
-            <h2>Members</h2>
+            <h2>Membros</h2>
             {isSub ? (
               <Subscribed>Inscrito</Subscribed>
             ) : (
